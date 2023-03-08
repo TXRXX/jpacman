@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.ui;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.*;
@@ -15,7 +17,7 @@ public class MenuDifficultyUI {
 
 
             JLabel headerLabel = new JLabel("SELECT DIFFICULTY");
-            headerLabel.setFont(new Font("Arial", Font.BOLD, 35));
+            headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
             frame.add(headerLabel, new GridBagConstraints());
             Color headerTextColor = Color.white;
             headerLabel.setForeground(headerTextColor);
@@ -29,27 +31,28 @@ public class MenuDifficultyUI {
             JButton buttonEasyMode = new JButton("Daddy, can i play this game?");
             JButton buttonNormalMode = new JButton("Let's get it");
             JButton buttonHardMode = new JButton("Are you crazy!");
-            JButton buttonBack = new JButton("Back");
+            JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
+            buttonEasyMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
+            buttonNormalMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
+            buttonHardMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
 
             buttonEasyMode.setIcon(scaledIcon);
             buttonNormalMode.setIcon(scaledIcon);
             buttonHardMode.setIcon(scaledIcon);
+            backButton.setBorderPainted(false);
 
             buttonEasyMode.setPreferredSize(new Dimension(300, 50));
             buttonNormalMode.setPreferredSize(new Dimension(300, 50));
             buttonHardMode.setPreferredSize(new Dimension(300, 50));
-            buttonBack.setPreferredSize(new Dimension(100, 50));
 
 
-            Color BackColor = new Color(117, 117, 117);
             Color buttonBgColor = Color.BLACK;
             Color buttonTextColor = Color.WHITE;
             buttonEasyMode.setBackground(buttonBgColor);
             buttonNormalMode.setBackground(buttonBgColor);
             buttonHardMode.setBackground(buttonBgColor);
-            buttonBack.setBackground(BackColor);
-            
+
             buttonEasyMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
             buttonNormalMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
             buttonHardMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -58,8 +61,7 @@ public class MenuDifficultyUI {
             buttonEasyMode.setForeground(buttonTextColor);
             buttonNormalMode.setForeground(buttonTextColor);
             buttonHardMode.setForeground(buttonTextColor);
-            buttonBack.setForeground(buttonTextColor);
-            
+
             buttonEasyMode.setHorizontalAlignment(SwingConstants.LEFT);
             buttonNormalMode.setHorizontalAlignment(SwingConstants.LEFT);
             buttonHardMode.setHorizontalAlignment(SwingConstants.LEFT);
@@ -67,7 +69,27 @@ public class MenuDifficultyUI {
             frame.add(buttonEasyMode, new GridBagConstraints());
             frame.add(buttonNormalMode, new GridBagConstraints());
             frame.add(buttonHardMode, new GridBagConstraints());
-            frame.add(buttonBack, new GridBagConstraints());
+
+
+            buttonEasyMode.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+//                    frame.dispose();
+//                    DO SOMETHING
+                }
+            });
+            buttonHardMode.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+//                    frame.dispose();
+//                    DO SOMETHING
+                }
+            });
+            backButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    HomeUI.main(null);
+                }
+            });
+
 
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.gridx = 0;
@@ -91,7 +113,7 @@ public class MenuDifficultyUI {
 
             gbc.gridy = 4;
             gbc.weighty = 1;
-            frame.add(buttonBack, gbc);
+            frame.add(backButton, gbc);
 
             frame.setSize(400, 400);
             frame.setResizable(false);
