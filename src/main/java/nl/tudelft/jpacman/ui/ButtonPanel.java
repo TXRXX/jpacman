@@ -1,10 +1,9 @@
 package nl.tudelft.jpacman.ui;
 
+import java.awt.*;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  * A panel containing a button for every registered action.
@@ -30,10 +29,27 @@ class ButtonPanel extends JPanel {
 
         for (final String caption : buttons.keySet()) {
             JButton button = new JButton(caption);
+            if (button.getText().equals("Start")) {
+                button = new JButton(new ImageIcon("src/main/resources/assets/inGamePlayButton.png"));
+                button.setBorderPainted(false);
+                button.setOpaque(false);
+                button.setContentAreaFilled(false);
+            }
+            if (button.getText().equals("Stop")) {
+                button = new JButton(new ImageIcon("src/main/resources/assets/pauseButton.png"));
+                button.setBorderPainted(false);
+                button.setOpaque(false);
+                button.setContentAreaFilled(false);
+            }
             button.addActionListener(e -> {
                 buttons.get(caption).doAction();
                 parent.requestFocusInWindow();
             });
+
+
+
+//            JButton playButton = new JButton(new ImageIcon("src/main/resources/assets/playButton.png"));
+
             add(button);
         }
     }
