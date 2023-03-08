@@ -74,8 +74,8 @@ public class Clyde extends Ghost {
      *
      * @param spriteMap The sprites for this ghost.
      */
-    public Clyde(Map<Direction, Sprite> spriteMap) {
-        super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
+    public Clyde(Map<Direction, Sprite> spriteMap, int speed) {
+        super(spriteMap, speed, INTERVAL_VARIATION);
     }
 
     /**
