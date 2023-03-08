@@ -12,20 +12,21 @@ import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_NAME;
 
 public class InputNameUI {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("JPacman");
+        JFrame frame = new JFrame("Pacman Enter Name");
         frame.setLayout(new GridBagLayout());
-        //Color bgColor = Color.black;
-        //frame.getContentPane().setBackground(bgColor);
-        //frame.setLayout(new GridBagLayout());
+        Color bgColor = Color.black;
+        frame.getContentPane().setBackground(bgColor);
 
         JTextField textField = new JTextField(20);
         JButton buttonStart = new JButton("START");
         JButton buttonBack = new JButton("BACK");
 
-
         JPanel panel = new JPanel();
-        panel.add(new JLabel("Enter your name:"));
-
+        panel.add(new JLabel("ENTER YOUR NAME:"));
+        panel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
+        frame.add(panel, new GridBagConstraints());
+        Color headerTextColor = Color.white;
+        panel.setForeground(headerTextColor);
 
         frame.add(textField, new GridBagConstraints());
         frame.add(buttonStart, new GridBagConstraints());
@@ -40,6 +41,13 @@ public class InputNameUI {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
+
+        buttonBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                MenuDifficultyUI.main(null);
             }
         });
 

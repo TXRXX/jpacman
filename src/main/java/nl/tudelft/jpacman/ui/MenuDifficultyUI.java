@@ -13,11 +13,10 @@ import javax.swing.border.AbstractBorder;
 
 public class MenuDifficultyUI {
         public static void main(String s[]) {
-            JFrame frame = new JFrame("JPacman");
+            JFrame frame = new JFrame("Pacman Select Difficulty");
             Color bgColor = Color.black;
             frame.getContentPane().setBackground(bgColor);
             frame.setLayout(new GridBagLayout());
-
 
             JLabel headerLabel = new JLabel("SELECT DIFFICULTY");
             headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
@@ -102,7 +101,7 @@ public class MenuDifficultyUI {
             backButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
-                    HomeUI.main(null);
+                    MenuModeUI.main(null);
                 }
             });
 
