@@ -1,6 +1,10 @@
 package nl.tudelft.jpacman.ui;
 import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
+
 import javax.swing.*;
+import javax.swing.border.AbstractBorder;
+
 
 public class MenuDifficultyUI {
         public static void main(String s[]) {
@@ -38,17 +42,27 @@ public class MenuDifficultyUI {
             buttonBack.setPreferredSize(new Dimension(100, 50));
 
 
-            Color buttonBgColor = Color.DARK_GRAY;
-            Color buttonTextColor = Color.white;
+            Color BackColor = new Color(117, 117, 117);
+            Color buttonBgColor = Color.BLACK;
+            Color buttonTextColor = Color.WHITE;
             buttonEasyMode.setBackground(buttonBgColor);
             buttonNormalMode.setBackground(buttonBgColor);
             buttonHardMode.setBackground(buttonBgColor);
-            buttonBack.setBackground(buttonBgColor);
+            buttonBack.setBackground(BackColor);
+            
+            buttonEasyMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+            buttonNormalMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+            buttonHardMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+            
 
             buttonEasyMode.setForeground(buttonTextColor);
             buttonNormalMode.setForeground(buttonTextColor);
             buttonHardMode.setForeground(buttonTextColor);
             buttonBack.setForeground(buttonTextColor);
+            
+            buttonEasyMode.setHorizontalAlignment(SwingConstants.LEFT);
+            buttonNormalMode.setHorizontalAlignment(SwingConstants.LEFT);
+            buttonHardMode.setHorizontalAlignment(SwingConstants.LEFT);
 
             frame.add(buttonEasyMode, new GridBagConstraints());
             frame.add(buttonNormalMode, new GridBagConstraints());

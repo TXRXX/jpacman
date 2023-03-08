@@ -33,20 +33,27 @@ public class HomeUI {
         buttonScore.setPreferredSize(new Dimension(250, 50));
         buttonQuit.setPreferredSize(new Dimension(250, 50));
 
-
-        Color buttonPlayGameBgColor = Color.DARK_GRAY;
         Color buttonTextColor = Color.white;
-        buttonPlayGame.setBackground(buttonPlayGameBgColor);
-        buttonSkins.setBackground(buttonPlayGameBgColor);
-        buttonScore.setBackground(buttonPlayGameBgColor);
-        buttonQuit.setBackground(buttonPlayGameBgColor);
-
 
         buttonPlayGame.setForeground(buttonTextColor);
         buttonSkins.setForeground(buttonTextColor);
         buttonScore.setForeground(buttonTextColor);
         buttonQuit.setForeground(buttonTextColor);
 
+        
+        Color PlayColor = new Color(138, 202, 88);
+        buttonPlayGame.setBackground(PlayColor);
+        buttonPlayGame.setOpaque(true);
+        Color SkinsColor = new Color(88, 202, 147);
+        buttonSkins.setBackground(SkinsColor);
+        buttonSkins.setOpaque(true);
+        Color ScoreColor = new Color(209, 100, 0);
+        buttonScore.setBackground(ScoreColor);
+        buttonScore.setOpaque(true);
+        Color QuitColor = new Color(209, 62, 62);
+        buttonQuit.setBackground(QuitColor);
+        buttonQuit.setOpaque(true);
+        
 
         frame.add(buttonPlayGame, new GridBagConstraints());
         frame.add(buttonSkins, new GridBagConstraints());
