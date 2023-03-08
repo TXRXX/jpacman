@@ -1,7 +1,14 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_NAME;
 
 public class InputNameUI {
     public static void main(String[] args) {
@@ -23,6 +30,18 @@ public class InputNameUI {
         frame.add(textField, new GridBagConstraints());
         frame.add(buttonStart, new GridBagConstraints());
         frame.add(buttonBack, new GridBagConstraints());
+
+        buttonStart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                try {
+                    DEFAULT_PLAYER_NAME = textField.getText();
+                    Launcher.main(null);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridy = 1;

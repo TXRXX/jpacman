@@ -53,9 +53,9 @@ public class ScorePanel extends JPanel {
 
         setLayout(new GridLayout(2, players.size()));
 
-        for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER));
-        }
+//        for (int i = 1; i <= players.size(); i++) {
+//            add(new JLabel("Player " + i, JLabel.CENTER));
+//        }
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
@@ -64,6 +64,9 @@ public class ScorePanel extends JPanel {
         }
         JLabel difficultyLevel = new JLabel("Difficulty : "+Launcher.DEFAULT_DIFFICULTY,JLabel.CENTER);
         add(difficultyLevel);
+
+        JLabel namePlayer = new JLabel("Player : "+Launcher.DEFAULT_PLAYER_NAME,JLabel.CENTER);
+        add(namePlayer);
     }
 
 

@@ -79,36 +79,24 @@ public class MenuDifficultyUI {
             buttonEasyMode.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
-                    try {
-                        Launcher.DEFAULT_DIFFICULTY = "easy";
-                        Launcher.main(null);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                    Launcher.DEFAULT_DIFFICULTY = "easy";
+                    InputNameUI.main(null);
                 }
             });
 
             buttonNormalMode.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
-                    try {
-                        Launcher.DEFAULT_DIFFICULTY = "medium";
-                        Launcher.main(null);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                    Launcher.DEFAULT_DIFFICULTY = "medium";
+                    InputNameUI.main(null);
                 }
             });
 
             buttonHardMode.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
-                    try {
-                        Launcher.DEFAULT_DIFFICULTY = "hard";
-                        Launcher.main(null);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                    Launcher.DEFAULT_DIFFICULTY = "hard";
+                    InputNameUI.main(null);
                 }
             });
             backButton.addActionListener(new ActionListener() {

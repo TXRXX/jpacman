@@ -34,6 +34,7 @@ public class Launcher {
     public static final String DEFAULT_MAP = "/board.txt";
 
     public static String DEFAULT_DIFFICULTY = "easy";
+    public static String DEFAULT_PLAYER_NAME = "";
     private String levelMap = DEFAULT_MAP;
 
     private PacManUI pacManUI;
