@@ -24,8 +24,16 @@ public class MenuModeUI {
         JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
         classicButton.setBorderPainted(false);
+        classicButton.setOpaque(false);
+        classicButton.setContentAreaFilled(false);
+
         ghostButton.setBorderPainted(false);
+        ghostButton.setOpaque(false);
+        ghostButton.setContentAreaFilled(false);
+
         backButton.setBorderPainted(false);
+        backButton.setOpaque(false);
+        backButton.setContentAreaFilled(false);
 
         classicButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

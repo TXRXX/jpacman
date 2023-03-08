@@ -44,6 +44,8 @@ public class MenuDifficultyUI {
             buttonNormalMode.setIcon(scaledIcon);
             buttonHardMode.setIcon(scaledIcon);
             backButton.setBorderPainted(false);
+            backButton.setOpaque(false);
+            backButton.setContentAreaFilled(false);
 
             buttonEasyMode.setPreferredSize(new Dimension(300, 50));
             buttonNormalMode.setPreferredSize(new Dimension(300, 50));

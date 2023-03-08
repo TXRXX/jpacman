@@ -35,9 +35,21 @@ public class HomeUI {
         JButton quitButton = new JButton(new ImageIcon("src/main/resources/assets/quitButton.png"));
 
         playButton.setBorderPainted(false);
+        playButton.setOpaque(false);
+        playButton.setContentAreaFilled(false);
+
         skinsButton.setBorderPainted(false);
+        skinsButton.setOpaque(false);
+        skinsButton.setContentAreaFilled(false);
+
         scoreButton.setBorderPainted(false);
+        scoreButton.setOpaque(false);
+        scoreButton.setContentAreaFilled(false);
+
         quitButton.setBorderPainted(false);
+        quitButton.setOpaque(false);
+        quitButton.setContentAreaFilled(false);
+
 
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
