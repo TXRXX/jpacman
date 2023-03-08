@@ -12,7 +12,7 @@ import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_NAME;
 
 public class InputNameUI {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("JPacman");
+        JFrame frame = new JFrame("Pacman Player Name");
         frame.setLayout(new GridBagLayout());
         //Color bgColor = Color.black;
         //frame.getContentPane().setBackground(bgColor);
