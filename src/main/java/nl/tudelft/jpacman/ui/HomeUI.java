@@ -2,9 +2,16 @@ package nl.tudelft.jpacman.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class HomeUI {
+
+
     public static void main(String s[]) {
+
         JFrame frame = new JFrame("JPacman");
         Color bgColor = Color.black;
         frame.getContentPane().setBackground(bgColor);
@@ -16,49 +23,29 @@ public class HomeUI {
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
         JLabel headerLabel = new JLabel("PacMan");
-        headerLabel.setFont(new Font("Arial", Font.BOLD, 50));
+        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
         frame.add(headerLabel, new GridBagConstraints());
         Color headerTextColor = Color.white;
         headerLabel.setForeground(headerTextColor);
-        headerLabel.setIcon(scaledIcon);
+//        headerLabel.setIcon(scaledIcon);
 
+        JButton playButton = new JButton(new ImageIcon("src/main/resources/assets/playButton.png"));
+        JButton skinsButton = new JButton(new ImageIcon("src/main/resources/assets/skinButton.png"));
+        JButton scoreButton = new JButton(new ImageIcon("src/main/resources/assets/scoreButton.png"));
+        JButton quitButton = new JButton(new ImageIcon("src/main/resources/assets/quitButton.png"));
 
-        JButton buttonPlayGame = new JButton("PLAY");
-        JButton buttonSkins = new JButton("SKINS");
-        JButton buttonScore = new JButton("SCORE");
-        JButton buttonQuit = new JButton("QUIT");
+        playButton.setBorderPainted(false);
+        skinsButton.setBorderPainted(false);
+        scoreButton.setBorderPainted(false);
+        quitButton.setBorderPainted(false);
 
-        buttonPlayGame.setPreferredSize(new Dimension(250, 50));
-        buttonSkins.setPreferredSize(new Dimension(250, 50));
-        buttonScore.setPreferredSize(new Dimension(250, 50));
-        buttonQuit.setPreferredSize(new Dimension(250, 50));
+        playButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                MenuModeUI.main(null);
+            }
+        });
 
-        Color buttonTextColor = Color.white;
-
-        buttonPlayGame.setForeground(buttonTextColor);
-        buttonSkins.setForeground(buttonTextColor);
-        buttonScore.setForeground(buttonTextColor);
-        buttonQuit.setForeground(buttonTextColor);
-
-        
-        Color PlayColor = new Color(138, 202, 88);
-        buttonPlayGame.setBackground(PlayColor);
-        buttonPlayGame.setOpaque(true);
-        Color SkinsColor = new Color(88, 202, 147);
-        buttonSkins.setBackground(SkinsColor);
-        buttonSkins.setOpaque(true);
-        Color ScoreColor = new Color(209, 100, 0);
-        buttonScore.setBackground(ScoreColor);
-        buttonScore.setOpaque(true);
-        Color QuitColor = new Color(209, 62, 62);
-        buttonQuit.setBackground(QuitColor);
-        buttonQuit.setOpaque(true);
-        
-
-        frame.add(buttonPlayGame, new GridBagConstraints());
-        frame.add(buttonSkins, new GridBagConstraints());
-        frame.add(buttonScore, new GridBagConstraints());
-        frame.add(buttonQuit, new GridBagConstraints());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -70,19 +57,20 @@ public class HomeUI {
 
         gbc.gridy = 1;
         gbc.weighty = 0.5;
-        frame.add(buttonPlayGame, gbc);
+        frame.add(playButton, gbc);
+
 
         gbc.gridy = 2;
         gbc.weighty = 0.5;
-        frame.add(buttonSkins, gbc);
+        frame.add(skinsButton, gbc);
 
         gbc.gridy = 3;
         gbc.weighty = 0.5;
-        frame.add(buttonScore, gbc);
+        frame.add(scoreButton, gbc);
 
         gbc.gridy = 4;
         gbc.weighty = 0.5;
-        frame.add(buttonQuit, gbc);
+        frame.add(quitButton, gbc);
 
         frame.setSize(400, 400);
         frame.setResizable(false);
