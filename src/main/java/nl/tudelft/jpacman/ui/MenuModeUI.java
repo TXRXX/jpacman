@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class MenuModeUI {
     public static void main(String s[]) {
-        JFrame frame = new JFrame("JPacman");
+        JFrame frame = new JFrame("Pacman Select Mode");
         Color bgColor = Color.black;
         frame.getContentPane().setBackground(bgColor);
         frame.setLayout(new GridBagLayout());

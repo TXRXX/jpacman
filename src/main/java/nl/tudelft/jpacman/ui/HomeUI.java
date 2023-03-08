@@ -12,7 +12,7 @@ public class HomeUI {
 
     public static void main(String s[]) {
 
-        JFrame frame = new JFrame("JPacman");
+        JFrame frame = new JFrame("Pacman Main Menu");
         Color bgColor = Color.black;
         frame.getContentPane().setBackground(bgColor);
         frame.setLayout(new GridBagLayout());
