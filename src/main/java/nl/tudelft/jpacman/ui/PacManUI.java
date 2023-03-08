@@ -1,7 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -79,19 +78,21 @@ public class PacManUI extends JFrame {
         addKeyListener(keys);
 
         JPanel buttonPanel = new ButtonPanel(buttons, this);
+        buttonPanel.setBackground(Color.BLACK);
 
         scorePanel = new ScorePanel(game.getPlayers());
         if (scoreFormatter != null) {
             scorePanel.setScoreFormatter(scoreFormatter);
         }
+        scorePanel.setBackground(Color.BLACK);
 
         boardPanel = new BoardPanel(game);
 
         Container contentPanel = getContentPane();
         contentPanel.setLayout(new BorderLayout());
-        contentPanel.add(buttonPanel, BorderLayout.SOUTH);
         contentPanel.add(scorePanel, BorderLayout.NORTH);
-        contentPanel.add(boardPanel, BorderLayout.CENTER);
+        contentPanel.add(buttonPanel, BorderLayout.CENTER);
+        contentPanel.add(boardPanel, BorderLayout.SOUTH);
 
         pack();
     }

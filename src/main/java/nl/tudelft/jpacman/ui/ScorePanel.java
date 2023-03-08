@@ -1,6 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +34,7 @@ public class ScorePanel extends JPanel {
      * The default way in which the score is shown.
      */
     public static final ScoreFormatter DEFAULT_SCORE_FORMATTER =
-        (Player player) -> String.format("Score: %3d", player.getScore());
+        (Player player) -> String.format("Score : %3d", player.getScore());
 
     /**
      * The way to format the score information.
@@ -59,14 +59,23 @@ public class ScorePanel extends JPanel {
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
+            scoreLabel.setForeground(Color.white);
+            scoreLabel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel);
         }
         JLabel difficultyLevel = new JLabel("Difficulty : "+Launcher.DEFAULT_DIFFICULTY,JLabel.CENTER);
         add(difficultyLevel);
+        difficultyLevel.setForeground(Color.white);
+        difficultyLevel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
 
         JLabel namePlayer = new JLabel("Player : "+Launcher.DEFAULT_PLAYER_NAME,JLabel.CENTER);
         add(namePlayer);
+        namePlayer.setForeground(Color.white);
+        namePlayer.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
+
     }
 
 
