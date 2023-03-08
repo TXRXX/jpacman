@@ -1,8 +1,11 @@
 package nl.tudelft.jpacman.ui;
+import nl.tudelft.jpacman.Launcher;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -73,14 +76,37 @@ public class MenuDifficultyUI {
 
             buttonEasyMode.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-//                    frame.dispose();
-//                    DO SOMETHING
+                    frame.dispose();
+                    try {
+                        Launcher.DEFAULT_DIFFICULTY = "easy";
+                        Launcher.main(null);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
+
+            buttonNormalMode.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    try {
+                        Launcher.DEFAULT_DIFFICULTY = "medium";
+                        Launcher.main(null);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+
             buttonHardMode.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-//                    frame.dispose();
-//                    DO SOMETHING
+                    frame.dispose();
+                    try {
+                        Launcher.DEFAULT_DIFFICULTY = "hard";
+                        Launcher.main(null);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             backButton.addActionListener(new ActionListener() {

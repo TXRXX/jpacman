@@ -32,13 +32,15 @@ public class Launcher {
     private static final PacManSprites SPRITE_STORE = new PacManSprites();
 
     public static final String DEFAULT_MAP = "/board.txt";
+
+    public static String DEFAULT_DIFFICULTY = "easy";
     private String levelMap = DEFAULT_MAP;
 
     private PacManUI pacManUI;
     private Game game;
 
     /**
-     * @return The game object this launcher will start when {@link #launch()}
+     * @return The game object this launcher will start when {@link #launch(String difficulty)}
      *         is called.
      */
     public Game getGame() {
@@ -182,8 +184,8 @@ public class Launcher {
     /**
      * Creates and starts a JPac-Man game.
      */
-    public void launch() {
-        makeGame("medium");
+    public void launch(String difficulty) {
+        makeGame(difficulty);
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
@@ -193,7 +195,6 @@ public class Launcher {
     /**
      * Disposes of the UI. For more information see
      * {@link javax.swing.JFrame#dispose()}.
-     *
      * Precondition: The game was launched first.
      */
     public void dispose() {
@@ -210,6 +211,6 @@ public class Launcher {
      *             When a resource could not be read.
      */
     public static void main(String[] args) throws IOException {
-        new Launcher().launch();
+        new Launcher().launch(DEFAULT_DIFFICULTY);
     }
 }

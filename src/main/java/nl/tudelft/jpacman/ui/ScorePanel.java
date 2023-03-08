@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;
 
 /**
@@ -61,7 +62,11 @@ public class ScorePanel extends JPanel {
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel);
         }
+        JLabel difficultyLevel = new JLabel("Difficulty : "+Launcher.DEFAULT_DIFFICULTY,JLabel.CENTER);
+        add(difficultyLevel);
     }
+
+
 
     /**
      * Refreshes the scores of the players.

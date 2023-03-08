@@ -158,10 +158,10 @@ public class LevelFactory {
             this.speed = 500;
         }
         if(difficulty.equals("medium")){
-            this.speed = 250;
+            this.speed = 300;
         }
         if(difficulty.equals("hard")){
-            this.speed = 200;
+            this.speed = 250;
         }
     }
 }

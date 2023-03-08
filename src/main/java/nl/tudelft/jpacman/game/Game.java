@@ -2,6 +2,7 @@ package nl.tudelft.jpacman.game;
 
 import java.util.List;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
@@ -70,6 +71,8 @@ public abstract class Game implements LevelObserver {
             getLevel().stop();
         }
     }
+
+
 
     /**
      * @return <code>true</code> iff the game is started and in progress.

@@ -1,11 +1,14 @@
 package nl.tudelft.jpacman.ui;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
+
+import javax.swing.*;
 
 /**
  * Builder for the JPac-Man UI.
