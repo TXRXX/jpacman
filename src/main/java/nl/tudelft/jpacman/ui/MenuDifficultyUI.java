@@ -79,6 +79,7 @@ public class MenuDifficultyUI {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "easy";
+                    Launcher.DEFAULT_PLAYER_LIFE = "infinity";
                     InputNameUI.main(null);
                 }
             });
@@ -87,6 +88,7 @@ public class MenuDifficultyUI {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "medium";
+                    Launcher.DEFAULT_PLAYER_LIFE = "3";
                     InputNameUI.main(null);
                 }
             });
@@ -95,6 +97,7 @@ public class MenuDifficultyUI {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "hard";
+                    Launcher.DEFAULT_PLAYER_LIFE = "1";
                     InputNameUI.main(null);
                 }
             });

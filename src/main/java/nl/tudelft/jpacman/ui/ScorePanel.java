@@ -69,6 +69,11 @@ public class ScorePanel extends JPanel {
         difficultyLevel.setForeground(Color.white);
         difficultyLevel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
 
+        JLabel lifePlayer = new JLabel("Life : "+ Launcher.DEFAULT_PLAYER_LIFE);
+        add(lifePlayer);
+        lifePlayer.setForeground(Color.white);
+        lifePlayer.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0");
             scoreLabel.setForeground(Color.white);

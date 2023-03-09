@@ -1,6 +1,7 @@
 package nl.tudelft.jpacman.game;
 
 import java.util.List;
+import java.util.Objects;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Direction;
@@ -10,6 +11,7 @@ import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 
 import static nl.tudelft.jpacman.Launcher.DEFAULT_DIFFICULTY;
+import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_LIFE;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -76,9 +78,17 @@ public abstract class Game implements LevelObserver {
 
     public void reset(){
         stop();
-        Launcher.pacManUI.reset();
-        Launcher launcher = new Launcher();
-        launcher.launch(DEFAULT_DIFFICULTY);
+        if(!Objects.equals(DEFAULT_DIFFICULTY, "easy") && !Objects.equals(DEFAULT_PLAYER_LIFE, "0")){
+            int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
+            life -= 1;
+            DEFAULT_PLAYER_LIFE = String.valueOf(life);
+//            System.out.println("Player Life : "+ DEFAULT_PLAYER_LIFE);
+        }
+        if(!Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
+            Launcher.pacManUI.reset();
+            Launcher launcher = new Launcher();
+            launcher.launch(DEFAULT_DIFFICULTY);
+        }
     }
 
 
