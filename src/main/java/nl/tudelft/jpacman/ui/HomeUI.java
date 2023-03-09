@@ -58,6 +58,12 @@ public class HomeUI {
             }
         });
 
+        quitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
+
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
