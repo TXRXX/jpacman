@@ -18,8 +18,14 @@ public class InputNameUI {
         frame.getContentPane().setBackground(bgColor);
 
         JTextField textField = new JTextField(15);
-        JButton startButton = new JButton("START");
+//        JButton startButton = new JButton("START");
+        JButton startButton = new JButton(new ImageIcon("src/main/resources/assets/startButton.png"));
         JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
+
+
+        startButton.setBorderPainted(false);
+        startButton.setOpaque(false);
+        startButton.setContentAreaFilled(false);
 
         backButton.setBorderPainted(false);
         backButton.setOpaque(false);
