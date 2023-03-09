@@ -56,24 +56,32 @@ public class ScorePanel extends JPanel {
 //        for (int i = 1; i <= players.size(); i++) {
 //            add(new JLabel("Player " + i, JLabel.CENTER));
 //        }
+
         scoreLabels = new LinkedHashMap<>();
-        for (Player player : players) {
-            JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
-            scoreLabel.setForeground(Color.white);
-            scoreLabel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
-            scoreLabels.put(player, scoreLabel);
-            add(scoreLabel);
-        }
-        JLabel difficultyLevel = new JLabel("Difficulty : "+Launcher.DEFAULT_DIFFICULTY,JLabel.CENTER);
+
+        JLabel namePlayer = new JLabel("Player : "+Launcher.DEFAULT_PLAYER_NAME);
+        add(namePlayer);
+        namePlayer.setForeground(Color.white);
+        namePlayer.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
+        JLabel difficultyLevel = new JLabel("Difficulty : "+Launcher.DEFAULT_DIFFICULTY, JLabel.RIGHT);
         add(difficultyLevel);
         difficultyLevel.setForeground(Color.white);
         difficultyLevel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
 
+        for (Player player : players) {
+            JLabel scoreLabel = new JLabel("0");
+            scoreLabel.setForeground(Color.white);
+            scoreLabel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+//            scoreLabel.setBackground(Color.RED);
+//            scoreLabel.setOpaque(true);
+            scoreLabels.put(player, scoreLabel);
+            add(scoreLabel);
+        }
 
-        JLabel namePlayer = new JLabel("Player : "+Launcher.DEFAULT_PLAYER_NAME,JLabel.CENTER);
-        add(namePlayer);
-        namePlayer.setForeground(Color.white);
-        namePlayer.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
+
+
 
 
     }

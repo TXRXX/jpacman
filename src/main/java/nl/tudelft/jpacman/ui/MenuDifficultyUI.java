@@ -18,7 +18,6 @@ public class MenuDifficultyUI {
             frame.getContentPane().setBackground(bgColor);
             frame.setLayout(new GridBagLayout());
 
-
             JLabel headerLabel = new JLabel("SELECT DIFFICULTY");
             headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
             frame.add(headerLabel, new GridBagConstraints());
@@ -102,7 +101,7 @@ public class MenuDifficultyUI {
             backButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
-                    HomeUI.main(null);
+                    MenuModeUI.main(null);
                 }
             });
 
