@@ -1,6 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;
 
 /**
@@ -33,7 +34,7 @@ public class ScorePanel extends JPanel {
      * The default way in which the score is shown.
      */
     public static final ScoreFormatter DEFAULT_SCORE_FORMATTER =
-        (Player player) -> String.format("Score: %3d", player.getScore());
+        (Player player) -> String.format("Score : %3d", player.getScore());
 
     /**
      * The way to format the score information.
@@ -52,16 +53,45 @@ public class ScorePanel extends JPanel {
 
         setLayout(new GridLayout(2, players.size()));
 
-        for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER));
-        }
+//        for (int i = 1; i <= players.size(); i++) {
+//            add(new JLabel("Player " + i, JLabel.CENTER));
+//        }
+
         scoreLabels = new LinkedHashMap<>();
+
+        JLabel namePlayer = new JLabel("Player : "+Launcher.DEFAULT_PLAYER_NAME);
+        add(namePlayer);
+        namePlayer.setForeground(Color.white);
+        namePlayer.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
+        JLabel difficultyLevel = new JLabel("Difficulty : "+Launcher.DEFAULT_DIFFICULTY, JLabel.RIGHT);
+        add(difficultyLevel);
+        difficultyLevel.setForeground(Color.white);
+        difficultyLevel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
+        JLabel lifePlayer = new JLabel("Life : "+ Launcher.DEFAULT_PLAYER_LIFE);
+        add(lifePlayer);
+        lifePlayer.setForeground(Color.white);
+        lifePlayer.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+
         for (Player player : players) {
-            JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
+            JLabel scoreLabel = new JLabel("0");
+            scoreLabel.setForeground(Color.white);
+            scoreLabel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
+//            scoreLabel.setBackground(Color.RED);
+//            scoreLabel.setOpaque(true);
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel);
         }
+
+
+
+
+
+
     }
+
+
 
     /**
      * Refreshes the scores of the players.

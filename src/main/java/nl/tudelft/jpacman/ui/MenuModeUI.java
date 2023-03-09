@@ -2,54 +2,60 @@ package nl.tudelft.jpacman.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuModeUI {
     public static void main(String s[]) {
-        JFrame frame = new JFrame("JPacman");
+        JFrame frame = new JFrame("Pacman Select Mode");
         Color bgColor = Color.black;
         frame.getContentPane().setBackground(bgColor);
         frame.setLayout(new GridBagLayout());
 
 
         JLabel headerLabel = new JLabel("SELECT MODE");
-        headerLabel.setFont(new Font("Arial", Font.BOLD, 35));
+        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
         frame.add(headerLabel, new GridBagConstraints());
         Color headerTextColor = Color.white;
         headerLabel.setForeground(headerTextColor);
 
-        //set image icon
-        ImageIcon icon = new ImageIcon("src/main/resources/sprite/fullPacman.png");
-        Image image = icon.getImage();
-        Image scaledImage = ((Image) image).getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        JButton classicButton = new JButton(new ImageIcon("src/main/resources/assets/classicButton.png"));
+        JButton ghostButton = new JButton(new ImageIcon("src/main/resources/assets/ghostButton.png"));
+        JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
-        JButton buttonPlayClassicMode = new JButton("Pacman Classic");
-        JButton buttonPlayGhostHuntMode = new JButton("Ghost Hunt");
-        JButton buttonBack = new JButton("Back");
+        classicButton.setBorderPainted(false);
+        classicButton.setOpaque(false);
+        classicButton.setContentAreaFilled(false);
 
+        ghostButton.setBorderPainted(false);
+        ghostButton.setOpaque(false);
+        ghostButton.setContentAreaFilled(false);
 
-        buttonPlayClassicMode.setIcon(scaledIcon);
-        buttonPlayGhostHuntMode.setIcon(scaledIcon);
+        backButton.setBorderPainted(false);
+        backButton.setOpaque(false);
+        backButton.setContentAreaFilled(false);
 
+        classicButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                MenuDifficultyUI.main(null);
+            }
+        });
 
-        buttonPlayClassicMode.setPreferredSize(new Dimension(200, 50));
-        buttonPlayGhostHuntMode.setPreferredSize(new Dimension(200, 50));
-        buttonBack.setPreferredSize(new Dimension(100, 50));
+//        ghostButton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                frame.dispose();
+//                MenuDifficultyUI.main(null);
+//            }
+//        });
 
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                HomeUI.main(null);
+            }
+        });
 
-        Color buttonBgColor = Color.DARK_GRAY;
-        Color buttonTextColor = Color.white;
-        buttonPlayClassicMode.setBackground(buttonBgColor);
-        buttonPlayGhostHuntMode.setBackground(buttonBgColor);
-        buttonBack.setBackground(buttonBgColor);
-
-        buttonPlayClassicMode.setForeground(buttonTextColor);
-        buttonPlayGhostHuntMode.setForeground(buttonTextColor);
-        buttonBack.setForeground(buttonTextColor);
-
-        frame.add(buttonPlayClassicMode, new GridBagConstraints());
-        frame.add(buttonPlayGhostHuntMode, new GridBagConstraints());
-        frame.add(buttonBack, new GridBagConstraints());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -61,15 +67,16 @@ public class MenuModeUI {
 
         gbc.gridy = 1;
         gbc.weighty = 0.5;
-        frame.add(buttonPlayClassicMode, gbc);
+        frame.add(classicButton, gbc);
 
         gbc.gridy = 2;
         gbc.weighty = 0.5;
-        frame.add(buttonPlayGhostHuntMode, gbc);
+        frame.add(ghostButton, gbc);
 
         gbc.gridy = 3;
         gbc.weighty = 0.5;
-        frame.add(buttonBack, gbc);
+        frame.add(backButton, gbc);
+
 
 
         frame.setSize(400, 400);

@@ -100,13 +100,13 @@ public class LevelFactory {
         ghostIndex %= GHOSTS;
         switch (ghostIndex) {
             case BLINKY:
-                return ghostFact.createBlinky();
+                return ghostFact.createBlinky(speed);
             case INKY:
-                return ghostFact.createInky();
+                return ghostFact.createInky(speed);
             case PINKY:
-                return ghostFact.createPinky();
+                return ghostFact.createPinky(speed);
             case CLYDE:
-                return ghostFact.createClyde();
+                return ghostFact.createClyde(speed);
             default:
                 return new RandomGhost(sprites.getGhostSprite(GhostColor.RED));
         }
@@ -146,6 +146,22 @@ public class LevelFactory {
         @Override
         public Optional<Direction> nextAiMove() {
             return Optional.empty();
+        }
+    }
+
+    /*
+    * Set move interval of Ghost speed
+    */
+    private int speed;
+    public void setSpeed(String difficulty){
+        if(difficulty.equals("easy")){
+            this.speed = 500;
+        }
+        if(difficulty.equals("medium")){
+            this.speed = 300;
+        }
+        if(difficulty.equals("hard")){
+            this.speed = 250;
         }
     }
 }

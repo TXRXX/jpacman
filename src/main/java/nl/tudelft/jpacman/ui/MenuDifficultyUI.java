@@ -1,6 +1,11 @@
 package nl.tudelft.jpacman.ui;
+import nl.tudelft.jpacman.Launcher;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -8,14 +13,13 @@ import javax.swing.border.AbstractBorder;
 
 public class MenuDifficultyUI {
         public static void main(String s[]) {
-            JFrame frame = new JFrame("JPacman");
+            JFrame frame = new JFrame("Pacman Select Difficulty");
             Color bgColor = Color.black;
             frame.getContentPane().setBackground(bgColor);
             frame.setLayout(new GridBagLayout());
 
-
             JLabel headerLabel = new JLabel("SELECT DIFFICULTY");
-            headerLabel.setFont(new Font("Arial", Font.BOLD, 35));
+            headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
             frame.add(headerLabel, new GridBagConstraints());
             Color headerTextColor = Color.white;
             headerLabel.setForeground(headerTextColor);
@@ -29,27 +33,30 @@ public class MenuDifficultyUI {
             JButton buttonEasyMode = new JButton("Daddy, can i play this game?");
             JButton buttonNormalMode = new JButton("Let's get it");
             JButton buttonHardMode = new JButton("Are you crazy!");
-            JButton buttonBack = new JButton("Back");
+            JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
+            buttonEasyMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
+            buttonNormalMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
+            buttonHardMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
 
             buttonEasyMode.setIcon(scaledIcon);
             buttonNormalMode.setIcon(scaledIcon);
             buttonHardMode.setIcon(scaledIcon);
+            backButton.setBorderPainted(false);
+            backButton.setOpaque(false);
+            backButton.setContentAreaFilled(false);
 
             buttonEasyMode.setPreferredSize(new Dimension(300, 50));
             buttonNormalMode.setPreferredSize(new Dimension(300, 50));
             buttonHardMode.setPreferredSize(new Dimension(300, 50));
-            buttonBack.setPreferredSize(new Dimension(100, 50));
 
 
-            Color BackColor = new Color(117, 117, 117);
             Color buttonBgColor = Color.BLACK;
             Color buttonTextColor = Color.WHITE;
             buttonEasyMode.setBackground(buttonBgColor);
             buttonNormalMode.setBackground(buttonBgColor);
             buttonHardMode.setBackground(buttonBgColor);
-            buttonBack.setBackground(BackColor);
-            
+
             buttonEasyMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
             buttonNormalMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
             buttonHardMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -58,8 +65,7 @@ public class MenuDifficultyUI {
             buttonEasyMode.setForeground(buttonTextColor);
             buttonNormalMode.setForeground(buttonTextColor);
             buttonHardMode.setForeground(buttonTextColor);
-            buttonBack.setForeground(buttonTextColor);
-            
+
             buttonEasyMode.setHorizontalAlignment(SwingConstants.LEFT);
             buttonNormalMode.setHorizontalAlignment(SwingConstants.LEFT);
             buttonHardMode.setHorizontalAlignment(SwingConstants.LEFT);
@@ -67,7 +73,41 @@ public class MenuDifficultyUI {
             frame.add(buttonEasyMode, new GridBagConstraints());
             frame.add(buttonNormalMode, new GridBagConstraints());
             frame.add(buttonHardMode, new GridBagConstraints());
-            frame.add(buttonBack, new GridBagConstraints());
+
+
+            buttonEasyMode.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    Launcher.DEFAULT_DIFFICULTY = "easy";
+                    Launcher.DEFAULT_PLAYER_LIFE = "infinity";
+                    InputNameUI.main(null);
+                }
+            });
+
+            buttonNormalMode.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    Launcher.DEFAULT_DIFFICULTY = "medium";
+                    Launcher.DEFAULT_PLAYER_LIFE = "3";
+                    InputNameUI.main(null);
+                }
+            });
+
+            buttonHardMode.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    Launcher.DEFAULT_DIFFICULTY = "hard";
+                    Launcher.DEFAULT_PLAYER_LIFE = "1";
+                    InputNameUI.main(null);
+                }
+            });
+            backButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    MenuModeUI.main(null);
+                }
+            });
+
 
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.gridx = 0;
@@ -91,7 +131,7 @@ public class MenuDifficultyUI {
 
             gbc.gridy = 4;
             gbc.weighty = 1;
-            frame.add(buttonBack, gbc);
+            frame.add(backButton, gbc);
 
             frame.setSize(400, 400);
             frame.setResizable(false);

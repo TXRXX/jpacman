@@ -31,20 +31,26 @@ import nl.tudelft.jpacman.ui.PacManUiBuilder;
 @SuppressWarnings("PMD.TooManyMethods")
 public class Launcher {
 
-    private static final PacManSprites SPRITE_STORE = new PacManSprites();
+    private static PacManSprites SPRITE_STORE = new PacManSprites();
 
     public static final String DEFAULT_MAP = "/board.txt";
+
+    public static String DEFAULT_DIFFICULTY = "easy";
+
+    public static String DEFAULT_PLAYER_LIFE = "infinity";
+    public static String DEFAULT_PLAYER_NAME = "";
     private String levelMap = DEFAULT_MAP;
 
 
-    private PacManUI pacManUI;
+    public static PacManUI pacManUI;
+
     private Game game;
 
     public Launcher() {
     }
 
     /**
-     * @return The game object this launcher will start when {@link #launch()}
+     * @return The game object this launcher will start when {@link #launch(String difficulty)}
      *         is called.
      */
     public Game getGame() {
@@ -73,13 +79,13 @@ public class Launcher {
     }
 
     /**
-     * Creates a new game using the level from {@link #makeLevel()}.
+     * Creates a new game using the level from {@link #makeLevel(String difficulty)}.
      *
      * @return a new Game.
      */
-    public Game makeGame() {
+    public Game makeGame(String difficulty) {
         GameFactory gf = getGameFactory();
-        Level level = makeLevel();
+        Level level = makeLevel(difficulty);
         game = gf.createSinglePlayerGame(level, loadPointCalculator());
         return game;
     }
@@ -94,9 +100,9 @@ public class Launcher {
      *
      * @return A new level.
      */
-    public Level makeLevel() {
+    public Level makeLevel(String difficulty) {
         try {
-            return getMapParser().parseMap(getLevelMap());
+            return getMapParser(difficulty).parseMap(getLevelMap());
         } catch (IOException e) {
             throw new PacmanConfigurationException(
                     "Unable to create level, name = " + getLevelMap(), e);
@@ -105,10 +111,10 @@ public class Launcher {
 
     /**
      * @return A new map parser object using the factories from
-     *         {@link #getLevelFactory()} and {@link #getBoardFactory()}.
+     *         {@link #getLevelFactory(String difficulty)} and {@link #getBoardFactory()}.
      */
-    protected MapParser getMapParser() {
-        return new MapParser(getLevelFactory(), getBoardFactory());
+    protected MapParser getMapParser(String difficulty) {
+        return new MapParser(getLevelFactory(difficulty), getBoardFactory());
     }
 
     /**
@@ -130,8 +136,10 @@ public class Launcher {
      * @return A new factory using the sprites from {@link #getSpriteStore()}
      *         and the ghosts from {@link #getGhostFactory()}.
      */
-    protected LevelFactory getLevelFactory() {
-        return new LevelFactory(getSpriteStore(), getGhostFactory(), loadPointCalculator());
+    protected LevelFactory getLevelFactory(String difficulty) {
+        LevelFactory level = new LevelFactory(getSpriteStore(), getGhostFactory(), loadPointCalculator());
+        level.setSpeed(difficulty);
+        return level;
     }
 
     /**
@@ -229,18 +237,27 @@ public class Launcher {
     /**
      * Creates and starts a JPac-Man game.
      */
-    public void launch() {
-        makeGame();
+    public void launch(String difficulty) {
+        makeGame(difficulty);
         PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
         pacManUI.start();
     }
 
+    public void reset(){
+        if (getGame().getLevel().isAnyPlayerAlive()){
+            makeGame(DEFAULT_DIFFICULTY);
+            PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+            addSinglePlayerKeys(builder);
+            pacManUI = builder.build(getGame());
+            pacManUI.start();
+        }
+    }
+
     /**
      * Disposes of the UI. For more information see
      * {@link javax.swing.JFrame#dispose()}.
-     *
      * Precondition: The game was launched first.
      */
     public void dispose() {
@@ -257,6 +274,6 @@ public class Launcher {
      *             When a resource could not be read.
      */
     public static void main(String[] args) throws IOException {
-        new Launcher().launch();
+        new Launcher().launch(DEFAULT_DIFFICULTY);
     }
 }

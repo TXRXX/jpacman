@@ -51,8 +51,8 @@ public class Inky extends Ghost {
      *
      * @param spriteMap The sprites for this ghost.
      */
-    public Inky(Map<Direction, Sprite> spriteMap) {
-        super(spriteMap, MOVE_INTERVAL, INTERVAL_VARIATION);
+    public Inky(Map<Direction, Sprite> spriteMap, int speed) {
+        super(spriteMap, speed, INTERVAL_VARIATION);
     }
 
     /**

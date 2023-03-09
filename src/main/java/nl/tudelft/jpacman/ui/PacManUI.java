@@ -1,7 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -78,22 +77,28 @@ public class PacManUI extends JFrame {
             PacKeyListener keys = new PacKeyListener(keyMappings);
             addKeyListener(keys);
 
-            JPanel buttonPanel = new ButtonPanel(buttons, this);
 
-            scorePanel = new ScorePanel(game.getPlayers());
-            if (scoreFormatter != null) {
-                scorePanel.setScoreFormatter(scoreFormatter);
-            }
+        JPanel buttonPanel = new ButtonPanel(buttons, this);
+        buttonPanel.setBackground(Color.BLACK);
+
+        scorePanel = new ScorePanel(game.getPlayers());
+        if (scoreFormatter != null) {
+            scorePanel.setScoreFormatter(scoreFormatter);
+        }
+        scorePanel.setBackground(Color.BLACK);
+
 
             boardPanel = new BoardPanel(game);
 
             Container contentPanel = getContentPane();
-            contentPanel.setLayout(new BorderLayout());
-            contentPanel.add(buttonPanel, BorderLayout.SOUTH);
-            contentPanel.add(scorePanel, BorderLayout.NORTH);
-            contentPanel.add(boardPanel, BorderLayout.CENTER);
+        contentPanel.setLayout(new BorderLayout());
+        contentPanel.add(scorePanel, BorderLayout.NORTH);
+        contentPanel.add(buttonPanel, BorderLayout.CENTER);
+        contentPanel.add(boardPanel, BorderLayout.SOUTH);
 
             pack();
+
+        
 
 
     }
@@ -104,6 +109,13 @@ public class PacManUI extends JFrame {
      */
     public void start() {
         setVisible(true);
+        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
+    }
+
+
+    public void reset(){
+        setVisible(false);
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
