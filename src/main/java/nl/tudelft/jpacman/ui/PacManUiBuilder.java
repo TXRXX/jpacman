@@ -1,8 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+
 
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
@@ -110,6 +109,7 @@ public class PacManUiBuilder {
         assert action != null;
 
         keyMappings.put(keyCode, action);
+
         return this;
     }
 

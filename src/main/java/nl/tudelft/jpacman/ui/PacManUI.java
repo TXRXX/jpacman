@@ -68,32 +68,34 @@ public class PacManUI extends JFrame {
     public PacManUI(final Game game, final Map<String, Action> buttons,
                     final Map<Integer, Action> keyMappings,
                     ScoreFormatter scoreFormatter) {
-        super("JPacman");
-        assert game != null;
-        assert buttons != null;
-        assert keyMappings != null;
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            super("JPacman");
+            assert game != null;
+            assert buttons != null;
+            assert keyMappings != null;
 
-        PacKeyListener keys = new PacKeyListener(keyMappings);
-        addKeyListener(keys);
+            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            PacKeyListener keys = new PacKeyListener(keyMappings);
+            addKeyListener(keys);
 
-        JPanel buttonPanel = new ButtonPanel(buttons, this);
+            JPanel buttonPanel = new ButtonPanel(buttons, this);
 
-        scorePanel = new ScorePanel(game.getPlayers());
-        if (scoreFormatter != null) {
-            scorePanel.setScoreFormatter(scoreFormatter);
-        }
+            scorePanel = new ScorePanel(game.getPlayers());
+            if (scoreFormatter != null) {
+                scorePanel.setScoreFormatter(scoreFormatter);
+            }
 
-        boardPanel = new BoardPanel(game);
+            boardPanel = new BoardPanel(game);
 
-        Container contentPanel = getContentPane();
-        contentPanel.setLayout(new BorderLayout());
-        contentPanel.add(buttonPanel, BorderLayout.SOUTH);
-        contentPanel.add(scorePanel, BorderLayout.NORTH);
-        contentPanel.add(boardPanel, BorderLayout.CENTER);
+            Container contentPanel = getContentPane();
+            contentPanel.setLayout(new BorderLayout());
+            contentPanel.add(buttonPanel, BorderLayout.SOUTH);
+            contentPanel.add(scorePanel, BorderLayout.NORTH);
+            contentPanel.add(boardPanel, BorderLayout.CENTER);
 
-        pack();
+            pack();
+
+
     }
 
     /**
@@ -105,6 +107,7 @@ public class PacManUI extends JFrame {
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
+
 
     /**
      * Draws the next frame, i.e. refreshes the scores and game.

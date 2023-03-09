@@ -3,6 +3,8 @@ package nl.tudelft.jpacman;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Direction;
@@ -34,8 +36,12 @@ public class Launcher {
     public static final String DEFAULT_MAP = "/board.txt";
     private String levelMap = DEFAULT_MAP;
 
+
     private PacManUI pacManUI;
     private Game game;
+
+    public Launcher() {
+    }
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -152,22 +158,65 @@ public class Launcher {
     /**
      * Adds key events UP, DOWN, LEFT and RIGHT to a game.
      *
-     * @param builder
-     *            The {@link PacManUiBuilder} that will provide the UI.
+     * @param builder The {@link PacManUiBuilder} that will provide the UI.
      */
+
     protected void addSinglePlayerKeys(final PacManUiBuilder builder) {
+
         builder.addKey(KeyEvent.VK_UP, moveTowardsDirection(Direction.NORTH))
-                .addKey(KeyEvent.VK_DOWN, moveTowardsDirection(Direction.SOUTH))
-                .addKey(KeyEvent.VK_LEFT, moveTowardsDirection(Direction.WEST))
-                .addKey(KeyEvent.VK_RIGHT, moveTowardsDirection(Direction.EAST));
+            .addKey(KeyEvent.VK_DOWN, moveTowardsDirection(Direction.SOUTH))
+            .addKey(KeyEvent.VK_LEFT, moveTowardsDirection(Direction.WEST))
+            .addKey(KeyEvent.VK_RIGHT, moveTowardsDirection(Direction.EAST));
+
     }
 
-    private Action moveTowardsDirection(Direction direction) {
-        return () -> {
-            assert game != null;
-            getGame().move(getSinglePlayer(getGame()), direction);
-        };
+    private Direction ValueDirection;
+    public boolean checkSameOldAndNew(Direction newValueDirection){
+        Direction oldValueDirection = this.ValueDirection;
+        this.ValueDirection = newValueDirection;
+        if(ValueDirection!=oldValueDirection){
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
+
+    private Timer timer = new Timer();
+    private TimerTask oldTask;
+    public void taskCancel(TimerTask task, Boolean c){
+        TimerTask ot = oldTask;
+        this.oldTask = task;
+        synchronized (ot){
+            if(c){
+                ot.cancel();
+            }
+        }
+    }
+    private Action moveTowardsDirection(Direction direction) {
+        boolean c = checkSameOldAndNew(direction);
+        if(c==false){
+            return null;
+        }
+
+        return () -> {
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    assert game != null;
+                    getGame().move(getSinglePlayer(getGame()), direction);
+                }
+            };
+            try{
+                taskCancel(task,c);
+            }finally {
+                timer.schedule(task, 0, 200);
+            }
+        };
+
+    }
+
 
     private Player getSinglePlayer(final Game game) {
         List<Player> players = game.getPlayers();
