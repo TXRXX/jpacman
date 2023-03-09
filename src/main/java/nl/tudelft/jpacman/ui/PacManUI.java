@@ -107,6 +107,12 @@ public class PacManUI extends JFrame {
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
 
+    public void reset(){
+        setVisible(false);
+        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
+    }
+
     /**
      * Draws the next frame, i.e. refreshes the scores and game.
      */

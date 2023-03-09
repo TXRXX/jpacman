@@ -29,7 +29,7 @@ import nl.tudelft.jpacman.ui.PacManUiBuilder;
 @SuppressWarnings("PMD.TooManyMethods")
 public class Launcher {
 
-    private static final PacManSprites SPRITE_STORE = new PacManSprites();
+    private static PacManSprites SPRITE_STORE = new PacManSprites();
 
     public static final String DEFAULT_MAP = "/board.txt";
 
@@ -37,7 +37,7 @@ public class Launcher {
     public static String DEFAULT_PLAYER_NAME = "";
     private String levelMap = DEFAULT_MAP;
 
-    private PacManUI pacManUI;
+    public static PacManUI pacManUI;
     private Game game;
 
     /**
@@ -191,6 +191,16 @@ public class Launcher {
         addSinglePlayerKeys(builder);
         pacManUI = builder.build(getGame());
         pacManUI.start();
+    }
+
+    public void reset(){
+        if (getGame().getLevel().isAnyPlayerAlive()){
+            makeGame(DEFAULT_DIFFICULTY);
+            PacManUiBuilder builder = new PacManUiBuilder().withDefaultButtons();
+            addSinglePlayerKeys(builder);
+            pacManUI = builder.build(getGame());
+            pacManUI.start();
+        }
     }
 
     /**

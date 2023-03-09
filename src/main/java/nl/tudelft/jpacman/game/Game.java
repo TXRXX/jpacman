@@ -9,6 +9,8 @@ import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 
+import static nl.tudelft.jpacman.Launcher.DEFAULT_DIFFICULTY;
+
 /**
  * A basic implementation of a Pac-Man game.
  *
@@ -72,6 +74,12 @@ public abstract class Game implements LevelObserver {
         }
     }
 
+    public void reset(){
+        stop();
+        Launcher.pacManUI.reset();
+        Launcher launcher = new Launcher();
+        launcher.launch(DEFAULT_DIFFICULTY);
+    }
 
 
     /**
@@ -114,6 +122,6 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelLost() {
-        stop();
+        reset();
     }
 }
