@@ -42,12 +42,12 @@ public class MenuModeUI {
             }
         });
 
-        ghostButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                MenuDifficultyUI.main(null);
-            }
-        });
+//        ghostButton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                frame.dispose();
+//                MenuDifficultyUI.main(null);
+//            }
+//        });
 
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
