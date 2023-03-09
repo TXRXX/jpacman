@@ -203,27 +203,38 @@ public class Launcher {
         }
     }
     private Action moveTowardsDirection(Direction direction) {
-        boolean c = checkSameOldAndNew(direction);
-        if(c==false){
-            return null;
-        }
 
-        return () -> {
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
-                    assert game != null;
-                    getGame().move(getSinglePlayer(getGame()), direction);
+        if(DEFAULT_DIFFICULTY == "easy"){
+            return () ->{
+                assert game != null;
+                getGame().move(getSinglePlayer(getGame()), direction);
+            };
+
+        }
+        else{
+            boolean c = checkSameOldAndNew(direction);
+            if(c==false){
+                return null;
+            }
+
+
+            return () -> {
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        assert game != null;
+                        getGame().move(getSinglePlayer(getGame()), direction);
+                    }
+                };
+                try{
+                    taskCancel(task,c);
+                }finally {
+                    timer.schedule(task, 0, 200);
                 }
             };
-            try{
-                taskCancel(task,c);
-            }finally {
-                timer.schedule(task, 0, 200);
-            }
-        };
-
+        }
     }
+
 
 
     private Player getSinglePlayer(final Game game) {
