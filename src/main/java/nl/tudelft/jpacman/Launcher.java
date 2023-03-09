@@ -217,7 +217,6 @@ public class Launcher {
                 return null;
             }
 
-
             return () -> {
                 TimerTask task = new TimerTask() {
                     @Override
@@ -229,7 +228,12 @@ public class Launcher {
                 try{
                     taskCancel(task,c);
                 }finally {
-                    timer.schedule(task, 0, 200);
+                    if(DEFAULT_DIFFICULTY == "medium"){
+                        timer.schedule(task, 0, 100);
+                    }else if(DEFAULT_DIFFICULTY == "hard"){
+                        timer.schedule(task, 0, 50);
+                    }
+
                 }
             };
         }
