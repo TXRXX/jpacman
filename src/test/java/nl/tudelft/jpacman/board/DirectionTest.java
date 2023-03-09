@@ -1,22 +1,62 @@
 package nl.tudelft.jpacman.board;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-/**
- * A very simple (and not particularly useful)
- * test class to have a starting point where to put tests.
- *
- * @author Arie van Deursen
- */
-public class DirectionTest {
-    /**
-     * Do we get the correct delta when moving north?
-     */
-    @Test
-    void testNorth() {
+class DirectionTest {
+
+	@DisplayName("testNorth Vertical")
+	@Test
+    void testNorthY() {
         Direction north = Direction.valueOf("NORTH");
-        assertThat(north.getDeltaY()).isEqualTo(-1);
+        assertEquals(-1,north.getDeltaY());
     }
+	@DisplayName("testNorth Horizontal")
+	@Test
+    void testNorthX() {
+        Direction north = Direction.valueOf("NORTH");
+        assertEquals(0,north.getDeltaX());
+    }
+	
+	@DisplayName("testSouth Vertical")
+	@Test
+    void testSouthY() {
+        Direction south = Direction.valueOf("SOUTH");
+        assertEquals(1,south.getDeltaY());
+    }
+	@DisplayName("testSouth Horizontal")
+	@Test
+    void testSouthX() {
+        Direction south = Direction.valueOf("SOUTH");
+        assertEquals(0,south.getDeltaX());
+    }
+	
+	@DisplayName("testEast Vertical")
+	@Test
+    void testEastY() {
+        Direction east = Direction.valueOf("EAST");
+        assertEquals(0,east.getDeltaY());
+    }
+	@DisplayName("testEast Horizontal")
+	@Test
+    void testEastX() {
+        Direction east = Direction.valueOf("EAST");
+        assertEquals(1,east.getDeltaX());
+    }
+	
+	@DisplayName("testWest Vertical")
+	@Test
+    void testWestY() {
+        Direction west = Direction.valueOf("WEST");
+        assertEquals(0,west.getDeltaY());
+    }
+	@DisplayName("testWest Horizontal")
+	@Test
+    void testWestX() {
+        Direction west = Direction.valueOf("WEST");
+        assertEquals(-1,west.getDeltaX());
+    }
+
 }
