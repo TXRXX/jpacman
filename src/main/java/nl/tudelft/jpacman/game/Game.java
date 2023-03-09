@@ -1,6 +1,8 @@
 package nl.tudelft.jpacman.game;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.Objects;
 
 import nl.tudelft.jpacman.Launcher;
@@ -117,13 +119,17 @@ public abstract class Game implements LevelObserver {
      * @param direction
      *            The direction to move in.
      */
+    public Timer timer = new Timer();
     public void move(Player player, Direction direction) {
+
         if (isInProgress()) {
             // execute player move.
             getLevel().move(player, direction);
             pointCalculator.pacmanMoved(player, direction);
+
         }
-    }
+    };
+
 
     @Override
     public void levelWon() {

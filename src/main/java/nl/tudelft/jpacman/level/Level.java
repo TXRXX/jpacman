@@ -173,7 +173,6 @@ public class Level {
         assert unit != null;
         assert direction != null;
         assert unit.hasSquare();
-
         if (!isInProgress()) {
             return;
         }
@@ -190,9 +189,12 @@ public class Level {
                     collisions.collide(unit, occupant);
                 }
             }
+
             updateObservers();
         }
+
     }
+
 
     /**
      * Starts or resumes this level, allowing movement and (re)starting the

@@ -67,15 +67,16 @@ public class PacManUI extends JFrame {
     public PacManUI(final Game game, final Map<String, Action> buttons,
                     final Map<Integer, Action> keyMappings,
                     ScoreFormatter scoreFormatter) {
-        super("Pacman In Game");
-        assert game != null;
-        assert buttons != null;
-        assert keyMappings != null;
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            super("JPacman");
+            assert game != null;
+            assert buttons != null;
+            assert keyMappings != null;
 
-        PacKeyListener keys = new PacKeyListener(keyMappings);
-        addKeyListener(keys);
+            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            PacKeyListener keys = new PacKeyListener(keyMappings);
+            addKeyListener(keys);
+
 
         JPanel buttonPanel = new ButtonPanel(buttons, this);
         buttonPanel.setBackground(Color.BLACK);
@@ -86,15 +87,20 @@ public class PacManUI extends JFrame {
         }
         scorePanel.setBackground(Color.BLACK);
 
-        boardPanel = new BoardPanel(game);
 
-        Container contentPanel = getContentPane();
+            boardPanel = new BoardPanel(game);
+
+            Container contentPanel = getContentPane();
         contentPanel.setLayout(new BorderLayout());
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(buttonPanel, BorderLayout.CENTER);
         contentPanel.add(boardPanel, BorderLayout.SOUTH);
 
-        pack();
+            pack();
+
+        
+
+
     }
 
     /**
@@ -107,11 +113,13 @@ public class PacManUI extends JFrame {
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
 
+
     public void reset(){
         setVisible(false);
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
+
 
     /**
      * Draws the next frame, i.e. refreshes the scores and game.

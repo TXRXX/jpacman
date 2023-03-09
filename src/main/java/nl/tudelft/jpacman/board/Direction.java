@@ -52,7 +52,9 @@ public enum Direction {
     Direction(int deltaX, int deltaY) {
         this.deltaX = deltaX;
         this.deltaY = deltaY;
+
     }
+
 
     /**
      * @return The delta x (width difference) for a single step in this
