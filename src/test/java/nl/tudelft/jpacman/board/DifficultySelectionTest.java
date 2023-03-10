@@ -2,6 +2,7 @@ package nl.tudelft.jpacman.board;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,7 +24,30 @@ class DifficultySelectionTest {
     JButton buttonHardMode = new JButton("Are you crazy!");
     JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
-    
+    @DisplayName("Easy to Input name")
+	@Test
+	void testEasytoName() {
+    	buttonEasyMode.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                Launcher.DEFAULT_DIFFICULTY = "easy";
+                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
+                InputNameUI.main(null);
+            }
+        });
+		buttonEasyMode.doClick();
+		
+		Frame[] frames = JFrame.getFrames();
+	    boolean isInputNameUIVisible = false;
+
+	    for (Frame f : frames) {
+	        if (f.getTitle().equals("Pacman Player Name") && f.isShowing()) {
+	        	isInputNameUIVisible = true;
+	            break;
+	        }
+	    }
+	    assertTrue(isInputNameUIVisible);
+	}
     @DisplayName("Player Difficalty Easy")
 	@Test
     void DifficulEasy() {
@@ -36,7 +60,6 @@ class DifficultySelectionTest {
             }
         });
 		buttonEasyMode.doClick();
-		buttonNormalMode.doClick();
 		
         assertEquals("easy",Launcher.DEFAULT_DIFFICULTY);
     }
@@ -56,7 +79,33 @@ class DifficultySelectionTest {
         assertEquals("infinity",Launcher.DEFAULT_PLAYER_LIFE);
     }
 	
-	@DisplayName("Player Difficalty Hard")
+	
+	@DisplayName("Medium to Input name")
+	@Test
+	void testMediumtoName() {
+    	buttonNormalMode.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                Launcher.DEFAULT_DIFFICULTY = "easy";
+                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
+                InputNameUI.main(null);
+            }
+        });
+		buttonNormalMode.doClick();
+		
+		Frame[] frames = JFrame.getFrames();
+	    boolean isInputNameUIVisible = false;
+
+	    for (Frame f : frames) {
+	        if (f.getTitle().equals("Pacman Player Name") && f.isShowing()) {
+	        	isInputNameUIVisible = true;
+	            break;
+	        }
+	    }
+	    assertTrue(isInputNameUIVisible);
+	}
+	
+	@DisplayName("Player Difficalty Medium")
 	@Test
     void DifficulMedium() {
 		buttonNormalMode.addActionListener(new ActionListener() {
@@ -86,6 +135,31 @@ class DifficultySelectionTest {
 		
         assertEquals("3",Launcher.DEFAULT_PLAYER_LIFE);
     }
+	
+	@DisplayName("Hard to Input name")
+	@Test
+	void testHardtoName() {
+    	buttonHardMode.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                Launcher.DEFAULT_DIFFICULTY = "easy";
+                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
+                InputNameUI.main(null);
+            }
+        });
+		buttonHardMode.doClick();
+		
+		Frame[] frames = JFrame.getFrames();
+	    boolean isInputNameUIVisible = false;
+
+	    for (Frame f : frames) {
+	        if (f.getTitle().equals("Pacman Player Name") && f.isShowing()) {
+	        	isInputNameUIVisible = true;
+	            break;
+	        }
+	    }
+	    assertTrue(isInputNameUIVisible);
+	}
 	
 	@DisplayName("Player Difficalty Hard")
 	@Test

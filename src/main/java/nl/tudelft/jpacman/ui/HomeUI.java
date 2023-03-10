@@ -50,7 +50,7 @@ public class HomeUI {
         quitButton.setOpaque(false);
         quitButton.setContentAreaFilled(false);
 
-
+        
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
