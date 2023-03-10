@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import nl.tudelft.jpacman.ui.HomeUI;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -190,6 +191,29 @@ class DifficultySelectionTest {
 		buttonHardMode.doClick();
 		
         assertEquals("1",Launcher.DEFAULT_PLAYER_LIFE);
+    }
+
+    @DisplayName("Back Button Test")
+    @Test
+    void testBackButton() {
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                HomeUI.main(null);
+            }
+        });
+        backButton.doClick();
+
+        Frame[] frames = JFrame.getFrames();
+        boolean isMenuModeUIVisible = false;
+
+        for (Frame f : frames) {
+            if (f.getTitle().equals("Pacman Select Mode") && f.isShowing()) {
+                isMenuModeUIVisible = true;
+                break;
+            }
+        }
+        assertTrue(isMenuModeUIVisible);
     }
 
 }
