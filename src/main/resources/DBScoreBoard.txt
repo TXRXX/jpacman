@@ -1,0 +1,3 @@
+wave	60
+tester1	140
+tester2	510
