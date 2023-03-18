@@ -58,6 +58,13 @@ public class HomeUI {
             }
         });
 
+        scoreButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                ScoreBoardUI.main(null);
+            }
+        });
+
         quitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
