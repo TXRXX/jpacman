@@ -21,11 +21,6 @@ public class ScoreBoardUI {
         Color headerTextColor = Color.white;
         headerLabel.setForeground(headerTextColor);
 
-        //set image icon
-        ImageIcon icon = new ImageIcon("src/main/resources/sprite/fullPacman.png");
-        Image image = icon.getImage();
-        Image scaledImage = ((Image) image).getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
         JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
 
