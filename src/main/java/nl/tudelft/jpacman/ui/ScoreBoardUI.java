@@ -42,7 +42,7 @@ public class ScoreBoardUI {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                MenuModeUI.main(null);
+                HomeUI.main(null);
             }
         });
 
