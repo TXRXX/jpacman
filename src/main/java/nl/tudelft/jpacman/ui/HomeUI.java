@@ -30,7 +30,7 @@ public class HomeUI {
 //        headerLabel.setIcon(scaledIcon);
 
         JButton playButton = new JButton(new ImageIcon("src/main/resources/assets/playButton.png"));
-        JButton skinsButton = new JButton(new ImageIcon("src/main/resources/assets/skinButton.png"));
+//        JButton skinsButton = new JButton(new ImageIcon("src/main/resources/assets/skinButton.png"));
         JButton scoreButton = new JButton(new ImageIcon("src/main/resources/assets/scoreButton.png"));
         JButton quitButton = new JButton(new ImageIcon("src/main/resources/assets/quitButton.png"));
 
@@ -38,9 +38,9 @@ public class HomeUI {
         playButton.setOpaque(false);
         playButton.setContentAreaFilled(false);
 
-        skinsButton.setBorderPainted(false);
-        skinsButton.setOpaque(false);
-        skinsButton.setContentAreaFilled(false);
+//        skinsButton.setBorderPainted(false);
+//        skinsButton.setOpaque(false);
+//        skinsButton.setContentAreaFilled(false);
 
         scoreButton.setBorderPainted(false);
         scoreButton.setOpaque(false);
@@ -78,15 +78,15 @@ public class HomeUI {
         frame.add(playButton, gbc);
 
 
-        gbc.gridy = 2;
-        gbc.weighty = 0.5;
-        frame.add(skinsButton, gbc);
+//        gbc.gridy = 2;
+//        gbc.weighty = 0.5;
+//        frame.add(skinsButton, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 2;
         gbc.weighty = 0.5;
         frame.add(scoreButton, gbc);
 
-        gbc.gridy = 4;
+        gbc.gridy = 3;
         gbc.weighty = 0.5;
         frame.add(quitButton, gbc);
 
