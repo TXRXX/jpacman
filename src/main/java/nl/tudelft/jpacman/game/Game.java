@@ -12,8 +12,7 @@ import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 
-import static nl.tudelft.jpacman.Launcher.DEFAULT_DIFFICULTY;
-import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_LIFE;
+import static nl.tudelft.jpacman.Launcher.*;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -80,6 +79,8 @@ public abstract class Game implements LevelObserver {
 
     public void reset(){
         stop();
+        // show Player Name and Score
+        System.out.println("Player Name : " + DEFAULT_PLAYER_NAME + ", Get Score :" + Player.score);
         if(!Objects.equals(DEFAULT_DIFFICULTY, "easy") && !Objects.equals(DEFAULT_PLAYER_LIFE, "0")){
             int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
             life -= 1;
