@@ -7,7 +7,7 @@ import java.util.*;
 
 
 public class DBScoreBoard {
-
+    public static  ArrayList<PlayerScore> Ps = new ArrayList<>();
     static final String pathScoreBoard = "src/main/resources/DBScoreBoard.txt";
     //create text file for keep playerName and Score
     public static void CreateScoreBoard(){
@@ -37,12 +37,12 @@ public class DBScoreBoard {
 
     }
 
-    public static void ReturnScoreBoard(){
+    public static ArrayList<PlayerScore> ReturnScoreBoard(){
         try{
             File ReadScoreBoard = new File(pathScoreBoard);
             Scanner myRead = new Scanner(ReadScoreBoard);
 
-            ArrayList<PlayerScore> Ps = new ArrayList<>();
+
 
             // Read data from database
             while (myRead.hasNextLine()){
@@ -67,6 +67,7 @@ public class DBScoreBoard {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+        return Ps;
     }
 
     public static void sortByScore(ArrayList<PlayerScore> list){
