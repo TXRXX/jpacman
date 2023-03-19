@@ -59,9 +59,9 @@ public class DBScoreBoard {
             sortByScore(Ps);
 
             //show data
-            for (PlayerScore p : Ps) {
-                System.out.println(p.getPlayerName() + " : "+ p.getScore());
-            }
+//            for (PlayerScore p : Ps) {
+//                System.out.println(p.getPlayerName() + " : "+ p.getScore());
+//            }
 
         }catch (IOException e){
             System.out.println("An error occurred.");
