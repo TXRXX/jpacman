@@ -99,19 +99,19 @@ public abstract class Game implements LevelObserver {
             Launcher launcher = new Launcher();
             launcher.launch(DEFAULT_DIFFICULTY);
         }
-
         else if(!isInProgress() && Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
-            popupController();
+            popupController("You Lost");
         }
+
     }
 
-    private void popupController(){
+    public void popupController(String text){
         JFrame popup = new JFrame("Popup");
         Color bgColor = Color.darkGray;
         popup.getContentPane().setBackground(bgColor);
         popup.setLayout(new GridBagLayout());
 
-        JLabel headerLabel = new JLabel("You ....");
+        JLabel headerLabel = new JLabel(text);
         headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
         popup.add(headerLabel, new GridBagConstraints());
         Color headerTextColor = Color.white;
@@ -197,6 +197,7 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelWon() {
+        popupController("You Won");
         stop();
     }
 
