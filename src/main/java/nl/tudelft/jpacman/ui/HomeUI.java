@@ -1,11 +1,12 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.game.DBScoreBoard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+
 
 public class HomeUI {
 
@@ -60,6 +61,7 @@ public class HomeUI {
 
         scoreButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
                 frame.dispose();
                 ScoreBoardUI.main(null);
             }

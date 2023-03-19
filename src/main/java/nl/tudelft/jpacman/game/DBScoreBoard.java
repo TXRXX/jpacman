@@ -3,8 +3,7 @@ package nl.tudelft.jpacman.game;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class DBScoreBoard {
@@ -51,16 +50,31 @@ public class DBScoreBoard {
                 String[] playerScore = data.split("\t");
                 //System.out.println(playerScore[0] + " : "+ playerScore[1]);
                 //System.out.println(data);
+
                 PlayerScore playerScore1 = new PlayerScore(playerScore[0],Integer.parseInt(playerScore[1]));
                 Ps.add(playerScore1);
             }
+
+            //sort score
+            sortByScore(Ps);
+
             //show data
             for (PlayerScore p : Ps) {
-                System.out.println(p.getPlayerName() + " : " + p.getScore());
+                System.out.println(p.getPlayerName() + " : "+ p.getScore());
             }
+
         }catch (IOException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public static void sortByScore(ArrayList<PlayerScore> list){
+        Collections.sort(list, new Comparator<PlayerScore>() {
+            @Override
+            public int compare(PlayerScore o1, PlayerScore o2) {
+                return o1.getScore()-o2.getScore();
+            }
+        });
     }
 }

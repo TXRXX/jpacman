@@ -1,6 +1,10 @@
 package nl.tudelft.jpacman.game;
 
-public class PlayerScore {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class PlayerScore{
     private String playerName;
     private int score;
 

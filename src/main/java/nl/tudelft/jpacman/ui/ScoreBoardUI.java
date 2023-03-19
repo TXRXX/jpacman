@@ -1,7 +1,5 @@
 package nl.tudelft.jpacman.ui;
 
-import nl.tudelft.jpacman.Launcher;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +8,7 @@ import java.awt.event.ActionListener;
 public class ScoreBoardUI {
         static JList b;
     public static void main(String s[]) {
+
         JFrame frame = new JFrame("Pacman Scoreboard");
         Color bgColor = Color.black;
         frame.getContentPane().setBackground(bgColor);

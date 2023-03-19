@@ -83,8 +83,10 @@ public abstract class Game implements LevelObserver {
         System.out.println("Player Name : " + DEFAULT_PLAYER_NAME + ", Get Score :" + Player.score);
         //write playerName and score to database
 //        DBScoreBoard.WriteScoreBoard(DEFAULT_PLAYER_NAME,Player.score);
+
         //Return Score Board
         DBScoreBoard.ReturnScoreBoard();
+
         if(!Objects.equals(DEFAULT_DIFFICULTY, "easy") && !Objects.equals(DEFAULT_PLAYER_LIFE, "0")){
             int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
             life -= 1;

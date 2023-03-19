@@ -1,3 +1,5 @@
 wave	60
 tester1	140
 tester2	510
+f	110
+sa	120
