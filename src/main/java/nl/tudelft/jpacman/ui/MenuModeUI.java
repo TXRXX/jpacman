@@ -20,7 +20,7 @@ public class MenuModeUI {
         headerLabel.setForeground(headerTextColor);
 
         JButton classicButton = new JButton(new ImageIcon("src/main/resources/assets/classicButton.png"));
-        JButton ghostButton = new JButton(new ImageIcon("src/main/resources/assets/ghostButton.png"));
+        JButton ghostButton = new JButton(new ImageIcon("src/main/resources/assets/challengeButton.png"));
         JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
         classicButton.setBorderPainted(false);
