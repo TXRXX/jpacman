@@ -68,8 +68,8 @@ public class ScoreBoardUI {
             String[] objs = {item.getPlayerName(), String.valueOf(item.getScore())};
             tableModel.addRow(objs);
         }
-        table.getColumnModel().getColumn(0).setPreferredWidth(100);
-        table.getColumnModel().getColumn(1).setPreferredWidth(100);
+        table.getColumnModel().getColumn(0).setPreferredWidth(120);
+        table.getColumnModel().getColumn(1).setPreferredWidth(120);
         table.setModel(tableModel);
 
 
