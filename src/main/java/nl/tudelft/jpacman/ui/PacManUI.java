@@ -107,9 +107,9 @@ public class PacManUI extends JFrame {
         contentPanel.add(buttonPanel, BorderLayout.CENTER);
         contentPanel.add(boardPanel, BorderLayout.SOUTH);
 
+
         pack();
 
-    }
 
 
     /**
