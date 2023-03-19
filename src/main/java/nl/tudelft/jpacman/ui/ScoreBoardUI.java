@@ -58,6 +58,7 @@ public class ScoreBoardUI {
         DefaultTableModel tableModel = new DefaultTableModel(col, 0);
         JTable table = new JTable(tableModel);
         tableModel.addRow(col);
+        table.setShowGrid(false);
 
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
