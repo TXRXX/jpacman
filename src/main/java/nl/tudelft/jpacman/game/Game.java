@@ -1,6 +1,8 @@
 package nl.tudelft.jpacman.game;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -12,6 +14,8 @@ import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
+import nl.tudelft.jpacman.ui.HomeUI;
+import nl.tudelft.jpacman.ui.MenuModeUI;
 
 import javax.swing.*;
 
@@ -114,27 +118,39 @@ public abstract class Game implements LevelObserver {
         headerLabel.setForeground(headerTextColor);
 
         JButton buttonBtHome = new JButton("HOME");
+        JButton buttonBtScore = new JButton("Score");
         JButton buttonRetry = new JButton("RETRY");
-        GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1;
-        gbc.anchor = GridBagConstraints.CENTER;
-        popup.add(headerLabel, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1;
-        popup.add(buttonBtHome, gbc);
+        popup.add(headerLabel);
+        popup.add(buttonBtHome);
+        popup.add(buttonRetry);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1;
-        popup.add(buttonRetry, gbc);
+        buttonBtHome.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Launcher.pacManUI.reset();
+                popup.dispose();
+                HomeUI.main(null);
+
+            }
+        });
+
+        buttonRetry.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                popup.dispose();
+                Launcher.pacManUI.reset();
+                Launcher launcher = new Launcher();
+                if(Launcher.DEFAULT_DIFFICULTY == "medium"){
+                    Launcher.DEFAULT_PLAYER_LIFE = "3";
+                }
+                else if (Launcher.DEFAULT_DIFFICULTY == "hard") {
+                    Launcher.DEFAULT_PLAYER_LIFE = "1";
+                }
+
+                launcher.launch(DEFAULT_DIFFICULTY);
+
+            }
+        });
 
         popup.pack();
         popup.setSize(300,300);

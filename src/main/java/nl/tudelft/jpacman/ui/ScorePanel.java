@@ -98,28 +98,6 @@ public class ScorePanel extends JPanel {
             String score = "";
 
             if (!player.isAlive()) {
-                /*
-                if(countLoop==0){
-                    countLoop = 1;
-                    JFrame popup = new JFrame("Popup");
-                    Color bgColor = Color.darkGray;
-                    popup.getContentPane().setBackground(bgColor);
-                    popup.setLayout(new GridBagLayout());
-
-                    JLabel headerLabel = new JLabel("Love u");
-
-                    headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
-                    popup.add(headerLabel, new GridBagConstraints());
-                    Color headerTextColor = Color.white;
-                    headerLabel.setForeground(headerTextColor);
-
-
-                    popup.add(headerLabel);
-                    popup.pack();
-                    popup.setSize(300,300);
-                    popup.setVisible(true);
-                }*/
-
                 score = "You died. ";
             }
             score += scoreFormatter.format(player);
