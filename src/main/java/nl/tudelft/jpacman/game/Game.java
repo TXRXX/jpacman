@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.game;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,6 +13,7 @@ import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
+import nl.tudelft.jpacman.ui.HomeUI;
 
 import static nl.tudelft.jpacman.Launcher.*;
 
@@ -75,6 +78,10 @@ public abstract class Game implements LevelObserver {
             inProgress = false;
             getLevel().stop();
         }
+    }
+
+    public void home() {
+       return;
     }
 
     public void reset(){

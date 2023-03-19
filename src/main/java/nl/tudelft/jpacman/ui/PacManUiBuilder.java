@@ -34,6 +34,11 @@ public class PacManUiBuilder {
     private static final String START_CAPTION = "Start";
 
     /**
+     * Caption for the default home button.
+     */
+    private static final String HOME_CAPTION = "Home";
+
+    /**
      * Map of buttons and their actions.
      */
     private final Map<String, Action> buttons;
@@ -75,6 +80,7 @@ public class PacManUiBuilder {
         if (defaultButtons) {
             addStartButton(game);
             addStopButton(game);
+            addHomeButton(game);
         }
         return new PacManUI(game, buttons, keyMappings, scoreFormatter);
     }
@@ -104,6 +110,13 @@ public class PacManUiBuilder {
 
         buttons.put(START_CAPTION, game::start);
     }
+
+    private void addHomeButton(final Game game) {
+        assert game != null;
+        buttons.put(HOME_CAPTION,game::home );
+    }
+
+
 
     /**
      * Adds a key listener to the UI.

@@ -75,7 +75,7 @@ public class ScorePanel extends JPanel {
         lifePlayer.setFont(new Font("Retro Gaming", Font.BOLD, 12));
 
         for (Player player : players) {
-            JLabel scoreLabel = new JLabel("0");
+            JLabel scoreLabel = new JLabel("0", JLabel.RIGHT);
             scoreLabel.setForeground(Color.white);
             scoreLabel.setFont(new Font("Retro Gaming", Font.BOLD, 12));
 //            scoreLabel.setBackground(Color.RED);

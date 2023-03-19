@@ -18,11 +18,14 @@ public class MenuDifficultyUI {
             frame.getContentPane().setBackground(bgColor);
             frame.setLayout(new GridBagLayout());
 
-            JLabel headerLabel = new JLabel("SELECT DIFFICULTY");
-            headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
+            ImageIcon ss = new ImageIcon("src/main/resources/assets/selectDifficultyTitle.png");
+            Image title = ss.getImage();
+            ImageIcon titleImg = new ImageIcon(title);
+            JLabel headerLabel = new JLabel("");
             frame.add(headerLabel, new GridBagConstraints());
             Color headerTextColor = Color.white;
             headerLabel.setForeground(headerTextColor);
+            headerLabel.setIcon(titleImg);
 
             //set image icon
             ImageIcon icon = new ImageIcon("src/main/resources/sprite/fullPacman.png");
