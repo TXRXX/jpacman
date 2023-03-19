@@ -4,9 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class ScoreBoardUI {
-        static JList b;
+    static JList b;
     public static void main(String s[]) {
 
         JFrame frame = new JFrame("Pacman Scoreboard");
@@ -23,11 +27,25 @@ public class ScoreBoardUI {
         JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
 
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("src/main/resources/assets/ss.txt"));
+            String[] data = lines.toArray(new String[0]);
+            JList<String> list = new JList<>(data);
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridy = 2;
+            gbc.weightx = 1.0;
+            gbc.weighty = 1;
+            frame.add(list, gbc);
+            System.out.println(list);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         String scores[]= {"TXRXX   30", "NEW TXRXX    40"};
 
-        b = new JList(scores);
-        b.setBackground(Color.BLACK);
-        b.setForeground(Color.white);
+//        b = new JList(scores);
+//        b.setBackground(Color.BLACK);
+//        b.setForeground(Color.white);
 
         backButton.setBorderPainted(false);
         backButton.setOpaque(false);
@@ -49,10 +67,7 @@ public class ScoreBoardUI {
         gbc.anchor = GridBagConstraints.CENTER;
         frame.add(headerLabel, gbc);
 
-        gbc.gridy = 2;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1;
-        frame.add(b, gbc);
+
 
         gbc.gridy = 4;
         gbc.weighty = 1;
