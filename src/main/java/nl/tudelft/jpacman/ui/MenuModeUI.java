@@ -39,6 +39,7 @@ public class MenuModeUI {
 
         classicButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Launcher.DEFAULT_MODE = "";
                 frame.dispose();
                 MenuDifficultyUI.main(null);
             }
