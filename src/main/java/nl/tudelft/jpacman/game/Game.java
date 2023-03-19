@@ -1,5 +1,6 @@
 package nl.tudelft.jpacman.game;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,6 +12,8 @@ import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
+
+import javax.swing.*;
 
 import static nl.tudelft.jpacman.Launcher.DEFAULT_DIFFICULTY;
 import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_LIFE;
@@ -57,6 +60,7 @@ public abstract class Game implements LevelObserver {
             if (isInProgress()) {
                 return;
             }
+
             if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0) {
                 inProgress = true;
                 getLevel().addObserver(this);
@@ -91,8 +95,52 @@ public abstract class Game implements LevelObserver {
             Launcher launcher = new Launcher();
             launcher.launch(DEFAULT_DIFFICULTY);
         }
+
+        else if(!isInProgress() && Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
+            popupController();
+        }
     }
 
+    private void popupController(){
+        JFrame popup = new JFrame("Popup");
+        Color bgColor = Color.darkGray;
+        popup.getContentPane().setBackground(bgColor);
+        popup.setLayout(new GridBagLayout());
+
+        JLabel headerLabel = new JLabel("You ....");
+        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
+        popup.add(headerLabel, new GridBagConstraints());
+        Color headerTextColor = Color.white;
+        headerLabel.setForeground(headerTextColor);
+
+        JButton buttonBtHome = new JButton("HOME");
+        JButton buttonRetry = new JButton("RETRY");
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        popup.add(headerLabel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1;
+        popup.add(buttonBtHome, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1;
+        popup.add(buttonRetry, gbc);
+
+        popup.pack();
+        popup.setSize(300,300);
+        popup.setResizable(false);
+        popup.setVisible(true);
+    };
 
     /**
      * @return <code>true</code> iff the game is started and in progress.

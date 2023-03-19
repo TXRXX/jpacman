@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,12 +44,13 @@ public class MenuModeUI {
             }
         });
 
-//        ghostButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                frame.dispose();
-//                MenuDifficultyUI.main(null);
-//            }
-//        });
+   ghostButton.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+               Launcher.DEFAULT_MODE = "Challenge";
+               frame.dispose();
+            MenuDifficultyUI.main(null);
+          }
+       });
 
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

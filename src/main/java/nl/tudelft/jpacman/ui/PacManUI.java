@@ -6,11 +6,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.game.Game;
+import nl.tudelft.jpacman.level.Level;
+import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
 /**
@@ -64,6 +64,7 @@ public class PacManUI extends JFrame {
      * @param scoreFormatter
      *            The formatter used to display the current score.
      */
+
     public PacManUI(final Game game, final Map<String, Action> buttons,
                     final Map<Integer, Action> keyMappings,
                     ScoreFormatter scoreFormatter) {
@@ -80,33 +81,42 @@ public class PacManUI extends JFrame {
 
         JPanel buttonPanel = new ButtonPanel(buttons, this);
         buttonPanel.setBackground(Color.BLACK);
+        /*
+        if(!game.isInProgress() && !game.getLevel().isAnyPlayerAlive()){
+            JFrame popup = new JFrame("Popup");
+            JLabel label = new JLabel("Love u");
+            popup.add(label);
+            popup.pack();
+            popup.setSize(300,300);
+            popup.setVisible(true);
+        }*/
+
 
         scorePanel = new ScorePanel(game.getPlayers());
         if (scoreFormatter != null) {
             scorePanel.setScoreFormatter(scoreFormatter);
         }
+
         scorePanel.setBackground(Color.BLACK);
 
+        boardPanel = new BoardPanel(game);
 
-            boardPanel = new BoardPanel(game);
-
-            Container contentPanel = getContentPane();
+        Container contentPanel = getContentPane();
         contentPanel.setLayout(new BorderLayout());
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(buttonPanel, BorderLayout.CENTER);
         contentPanel.add(boardPanel, BorderLayout.SOUTH);
 
-            pack();
-
-        
-
+        pack();
 
     }
+
 
     /**
      * Starts the "engine", the thread that redraws the interface at set
      * intervals.
      */
+
     public void start() {
         setVisible(true);
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();

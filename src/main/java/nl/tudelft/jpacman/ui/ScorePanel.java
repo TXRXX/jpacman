@@ -5,8 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;
@@ -85,22 +84,42 @@ public class ScorePanel extends JPanel {
         }
 
 
-
-
-
-
     }
-
 
 
     /**
      * Refreshes the scores of the players.
      */
+
+    private int countLoop = 0;
     protected void refresh() {
         for (Map.Entry<Player, JLabel> entry : scoreLabels.entrySet()) {
             Player player = entry.getKey();
             String score = "";
+
             if (!player.isAlive()) {
+                /*
+                if(countLoop==0){
+                    countLoop = 1;
+                    JFrame popup = new JFrame("Popup");
+                    Color bgColor = Color.darkGray;
+                    popup.getContentPane().setBackground(bgColor);
+                    popup.setLayout(new GridBagLayout());
+
+                    JLabel headerLabel = new JLabel("Love u");
+
+                    headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
+                    popup.add(headerLabel, new GridBagConstraints());
+                    Color headerTextColor = Color.white;
+                    headerLabel.setForeground(headerTextColor);
+
+
+                    popup.add(headerLabel);
+                    popup.pack();
+                    popup.setSize(300,300);
+                    popup.setVisible(true);
+                }*/
+
                 score = "You died. ";
             }
             score += scoreFormatter.format(player);
