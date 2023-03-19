@@ -33,50 +33,27 @@ public class MenuDifficultyUI {
             Image scaledImage = ((Image) image).getScaledInstance(30, 30, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-            JButton buttonEasyMode = new JButton("Daddy, can i play this game?");
-            JButton buttonNormalMode = new JButton("Let's get it");
-            JButton buttonHardMode = new JButton("Are you crazy!");
+            JButton buttonEasyMode = new JButton(new ImageIcon("src/main/resources/assets/easyButton.png"));
+            JButton buttonNormalMode = new JButton(new ImageIcon("src/main/resources/assets/mediumButton.png"));
+            JButton buttonHardMode = new JButton(new ImageIcon("src/main/resources/assets/hardButton.png"));
             JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
-            buttonEasyMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
-            buttonNormalMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
-            buttonHardMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
 
-            buttonEasyMode.setIcon(scaledIcon);
-            buttonNormalMode.setIcon(scaledIcon);
-            buttonHardMode.setIcon(scaledIcon);
+            buttonEasyMode.setBorderPainted(false);
+            buttonEasyMode.setOpaque(false);
+            buttonEasyMode.setContentAreaFilled(false);
+
+            buttonNormalMode.setBorderPainted(false);
+            buttonNormalMode.setOpaque(false);
+            buttonNormalMode.setContentAreaFilled(false);
+
+            buttonHardMode.setBorderPainted(false);
+            buttonHardMode.setOpaque(false);
+            buttonHardMode.setContentAreaFilled(false);
+
             backButton.setBorderPainted(false);
             backButton.setOpaque(false);
             backButton.setContentAreaFilled(false);
-
-            buttonEasyMode.setPreferredSize(new Dimension(300, 50));
-            buttonNormalMode.setPreferredSize(new Dimension(300, 50));
-            buttonHardMode.setPreferredSize(new Dimension(300, 50));
-
-
-            Color buttonBgColor = Color.BLACK;
-            Color buttonTextColor = Color.WHITE;
-            buttonEasyMode.setBackground(buttonBgColor);
-            buttonNormalMode.setBackground(buttonBgColor);
-            buttonHardMode.setBackground(buttonBgColor);
-
-            buttonEasyMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-            buttonNormalMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-            buttonHardMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-            
-
-            buttonEasyMode.setForeground(buttonTextColor);
-            buttonNormalMode.setForeground(buttonTextColor);
-            buttonHardMode.setForeground(buttonTextColor);
-
-            buttonEasyMode.setHorizontalAlignment(SwingConstants.LEFT);
-            buttonNormalMode.setHorizontalAlignment(SwingConstants.LEFT);
-            buttonHardMode.setHorizontalAlignment(SwingConstants.LEFT);
-
-            frame.add(buttonEasyMode, new GridBagConstraints());
-            frame.add(buttonNormalMode, new GridBagConstraints());
-            frame.add(buttonHardMode, new GridBagConstraints());
-
 
             buttonEasyMode.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
