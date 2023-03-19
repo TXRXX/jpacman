@@ -18,17 +18,16 @@ public class HomeUI {
         frame.getContentPane().setBackground(bgColor);
         frame.setLayout(new GridBagLayout());
 
-        ImageIcon icon = new ImageIcon("src/main/resources/sprite/fullPacman.png");
-        Image image = icon.getImage();
-        Image scaledImage = ((Image) image).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-        JLabel headerLabel = new JLabel("PacMan");
-        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
+        ImageIcon icon = new ImageIcon("src/main/resources/assets/PacMan-Logo.png");
+        Image image = icon.getImage();
+        ImageIcon scaledIcon = new ImageIcon(image);
+        JLabel headerLabel = new JLabel("");
         frame.add(headerLabel, new GridBagConstraints());
         Color headerTextColor = Color.white;
         headerLabel.setForeground(headerTextColor);
-//        headerLabel.setIcon(scaledIcon);
+        headerLabel.setIcon(scaledIcon);
+
 
         JButton playButton = new JButton(new ImageIcon("src/main/resources/assets/playButton.png"));
 //        JButton skinsButton = new JButton(new ImageIcon("src/main/resources/assets/skinButton.png"));
