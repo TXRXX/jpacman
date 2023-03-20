@@ -46,6 +46,9 @@ public class InputNameUI {
                 frame.dispose();
                 try {
                     DEFAULT_PLAYER_NAME = textField.getText();
+                    if(DEFAULT_PLAYER_NAME.equals("")){
+                        DEFAULT_PLAYER_NAME = "Anonymous";
+                    }
                     Launcher.main(null);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
