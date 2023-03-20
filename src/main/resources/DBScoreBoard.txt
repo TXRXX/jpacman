@@ -5,3 +5,5 @@ tester3	280
 tester4	300
 tester5	160
 Anonymous	840
+	0
+asdas	110

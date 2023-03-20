@@ -16,24 +16,45 @@ import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_NAME;
 
 public class PopupGame {
 
+
     public static void popupController(String text){
-        JFrame popup = new JFrame("Popup");
+        JFrame popup = new JFrame("");
         Color bgColor = Color.darkGray;
         popup.getContentPane().setBackground(bgColor);
-        popup.setLayout(new GridBagLayout());
+        popup.setLayout(null);
 
-        JLabel headerLabel = new JLabel(text);
-        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
-        popup.add(headerLabel, new GridBagConstraints());
-        Color headerTextColor = Color.white;
-        headerLabel.setForeground(headerTextColor);
+        if(text.equals("You Won")) {
+            ImageIcon icon = new ImageIcon("src/main/resources/assets/winTitle.png");
+            Image image = icon.getImage();
+            ImageIcon scaledIcon = new ImageIcon(image);
+            JLabel headerLabel = new JLabel("");
+            Color headerTextColor = Color.white;
+            headerLabel.setForeground(headerTextColor);
+            headerLabel.setIcon(scaledIcon);
+            headerLabel.setBounds(65, 20, 67, 9);
+            popup.add(headerLabel);
+        } else if (text.equals("You Lose")) {
+            ImageIcon icon = new ImageIcon("src/main/resources/assets/loseTitle.png");
+            Image image = icon.getImage();
+            ImageIcon scaledIcon = new ImageIcon(image);
+            JLabel headerLabel = new JLabel("");
+            Color headerTextColor = Color.white;
+            headerLabel.setForeground(headerTextColor);
+            headerLabel.setIcon(scaledIcon);
+            headerLabel.setBounds(60, 20, 80, 9);
+            popup.add(headerLabel);
+        }
 
-        JButton buttonBtHome = new JButton("HOME");
-        JButton buttonBtScore = new JButton("Score");
-        JButton buttonRetry = new JButton("RETRY");
+        JButton buttonBtHome = new JButton(new ImageIcon("src/main/resources/assets/popupHomeButton.png"));
+        buttonBtHome.setBounds(65, 50, 67, 22);
+
+        JButton buttonBtScore = new JButton(new ImageIcon("src/main/resources/assets/popupScoreButton.png"));
+        buttonBtScore.setBounds(65, 80, 67, 22);
+
+        JButton buttonRetry = new JButton(new ImageIcon("src/main/resources/assets/popupRetryButton.png"));
+        buttonRetry.setBounds(65, 110, 67, 22);
 
 
-        popup.add(headerLabel);
         popup.add(buttonBtHome);
         popup.add(buttonRetry);
         popup.add(buttonBtScore);
@@ -43,9 +64,9 @@ public class PopupGame {
                 Launcher.pacManUI.reset();
                 popup.dispose();
                 HomeUI.main(null);
-
             }
         });
+
         buttonRetry.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 popup.dispose();
@@ -57,9 +78,7 @@ public class PopupGame {
                 else if (Objects.equals(DEFAULT_DIFFICULTY, "hard")) {
                     Launcher.DEFAULT_PLAYER_LIFE = "1";
                 }
-
                 launcher.launch(DEFAULT_DIFFICULTY);
-
             }
         });
 
@@ -68,7 +87,6 @@ public class PopupGame {
 
                 //write playerName and score to database
                 DBScoreBoard.WriteScoreBoard(DEFAULT_PLAYER_NAME,Player.score);
-
                 popup.dispose();
                 ScoreBoardUI.main(null);
 
@@ -76,8 +94,8 @@ public class PopupGame {
         });
 
         popup.pack();
-        popup.setSize(300,300);
-//        popup.setResizable(false);
+        popup.setSize(200,  200);
+        popup.setResizable(false);
         popup.setVisible(true);
     };
 }

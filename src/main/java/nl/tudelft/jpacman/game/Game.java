@@ -100,7 +100,7 @@ public abstract class Game implements LevelObserver {
             launcher.launch(DEFAULT_DIFFICULTY);
         }
         else if(!isInProgress() && Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
-            PopupGame.popupController("You Lost");
+            PopupGame.popupController("You Lose");
         }
 
     }
