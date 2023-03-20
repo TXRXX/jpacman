@@ -228,6 +228,7 @@ public class Launcher {
                     }
                 };
 
+
                 try{
                     taskCancel(task,c);
                 }finally {
