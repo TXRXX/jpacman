@@ -58,6 +58,7 @@ public class ScoreBoardUI {
         DefaultTableModel tableModel = new DefaultTableModel(col, 0);
         JTable table = new JTable(tableModel);
         tableModel.addRow(col);
+        table.setShowGrid(false);
 
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
@@ -67,8 +68,8 @@ public class ScoreBoardUI {
             String[] objs = {item.getPlayerName(), String.valueOf(item.getScore())};
             tableModel.addRow(objs);
         }
-        table.getColumnModel().getColumn(0).setPreferredWidth(100);
-        table.getColumnModel().getColumn(1).setPreferredWidth(100);
+        table.getColumnModel().getColumn(0).setPreferredWidth(120);
+        table.getColumnModel().getColumn(1).setPreferredWidth(120);
         table.setModel(tableModel);
 
 

@@ -16,9 +16,7 @@ import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.HomeUI;
 import nl.tudelft.jpacman.ui.MenuModeUI;
-
 import javax.swing.*;
-
 import static nl.tudelft.jpacman.Launcher.*;
 
 /**
@@ -83,6 +81,10 @@ public abstract class Game implements LevelObserver {
             inProgress = false;
             getLevel().stop();
         }
+    }
+
+    public void home() {
+       return;
     }
 
     public void reset(){

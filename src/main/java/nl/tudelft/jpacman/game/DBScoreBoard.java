@@ -7,7 +7,8 @@ import java.util.*;
 
 
 public class DBScoreBoard {
-    public static  ArrayList<PlayerScore> Ps = new ArrayList<>();
+    public static  ArrayList<PlayerScore> Ps;
+    public static ArrayList<PlayerScore> topFiveSore;
     static final String pathScoreBoard = "src/main/resources/DBScoreBoard.txt";
     //create text file for keep playerName and Score
     public static void CreateScoreBoard(){
@@ -39,10 +40,10 @@ public class DBScoreBoard {
 
     public static ArrayList<PlayerScore> ReturnScoreBoard(){
         try{
+            Ps = new ArrayList<>();
+
             File ReadScoreBoard = new File(pathScoreBoard);
             Scanner myRead = new Scanner(ReadScoreBoard);
-
-
 
             // Read data from database
             while (myRead.hasNextLine()){
@@ -58,23 +59,33 @@ public class DBScoreBoard {
             //sort score
             sortByScore(Ps);
 
+            topFiveSore = new ArrayList<>();
+            int count = 0;
+
+            for (PlayerScore p : Ps) {
+                topFiveSore.add(Ps.get(count));
+                count +=1;
+                if(count == 5){
+                    break;
+                }
+            }
+
             //show data
-//            for (PlayerScore p : Ps) {
+//            for(PlayerScore p : topFiveSore){
 //                System.out.println(p.getPlayerName() + " : "+ p.getScore());
 //            }
-
         }catch (IOException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        return Ps;
+        return topFiveSore;
     }
 
     public static void sortByScore(ArrayList<PlayerScore> list){
         Collections.sort(list, new Comparator<PlayerScore>() {
             @Override
             public int compare(PlayerScore o1, PlayerScore o2) {
-                return o1.getScore()-o2.getScore();
+                return o2.getScore()-o1.getScore();
             }
         });
     }
