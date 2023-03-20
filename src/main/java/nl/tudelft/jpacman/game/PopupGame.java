@@ -86,6 +86,7 @@ public class PopupGame {
             public void actionPerformed(ActionEvent e) {
 
                 //write playerName and score to database
+                Launcher.pacManUI.reset();
                 DBScoreBoard.WriteScoreBoard(DEFAULT_PLAYER_NAME,Player.score);
                 popup.dispose();
                 ScoreBoardUI.main(null);

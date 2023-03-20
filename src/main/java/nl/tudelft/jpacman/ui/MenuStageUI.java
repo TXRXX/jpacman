@@ -145,7 +145,7 @@ public class MenuStageUI {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                HomeUI.main(null);
+                MenuDifficultyUI.main(null);
             }
         });
 
