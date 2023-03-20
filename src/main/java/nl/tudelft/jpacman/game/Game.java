@@ -84,13 +84,14 @@ public abstract class Game implements LevelObserver {
     }
 
     public void home() {
-       return;
+        stop();
     }
 
     public void reset(){
         stop();
         // show Player Name and Score
-        System.out.println("Player Name : " + DEFAULT_PLAYER_NAME + ", Get Score :" + Player.score);
+//        System.out.println("Player Name : " + DEFAULT_PLAYER_NAME + ", Get Score :" + Player.score);
+
         //write playerName and score to database
 //        DBScoreBoard.WriteScoreBoard(DEFAULT_PLAYER_NAME,Player.score);
 
@@ -106,64 +107,10 @@ public abstract class Game implements LevelObserver {
             launcher.launch(DEFAULT_DIFFICULTY);
         }
         else if(!isInProgress() && Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
-            popupController("You Lost");
+            PopupGame.popupController("You Lost");
         }
 
     }
-
-    public void popupController(String text){
-        JFrame popup = new JFrame("Popup");
-        Color bgColor = Color.darkGray;
-        popup.getContentPane().setBackground(bgColor);
-        popup.setLayout(new GridBagLayout());
-
-        JLabel headerLabel = new JLabel(text);
-        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
-        popup.add(headerLabel, new GridBagConstraints());
-        Color headerTextColor = Color.white;
-        headerLabel.setForeground(headerTextColor);
-
-        JButton buttonBtHome = new JButton("HOME");
-        JButton buttonBtScore = new JButton("Score");
-        JButton buttonRetry = new JButton("RETRY");
-
-
-        popup.add(headerLabel);
-        popup.add(buttonBtHome);
-        popup.add(buttonRetry);
-
-        buttonBtHome.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Launcher.pacManUI.reset();
-                popup.dispose();
-                HomeUI.main(null);
-
-            }
-        });
-
-        buttonRetry.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                popup.dispose();
-                Launcher.pacManUI.reset();
-                Launcher launcher = new Launcher();
-                if(Launcher.DEFAULT_DIFFICULTY == "medium"){
-                    Launcher.DEFAULT_PLAYER_LIFE = "3";
-                }
-                else if (Launcher.DEFAULT_DIFFICULTY == "hard") {
-                    Launcher.DEFAULT_PLAYER_LIFE = "1";
-                }
-
-                launcher.launch(DEFAULT_DIFFICULTY);
-
-            }
-        });
-
-        popup.pack();
-        popup.setSize(300,300);
-        popup.setResizable(false);
-        popup.setVisible(true);
-    };
-
     /**
      * @return <code>true</code> iff the game is started and in progress.
      */
@@ -189,7 +136,7 @@ public abstract class Game implements LevelObserver {
      * @param direction
      *            The direction to move in.
      */
-    public Timer timer = new Timer();
+
     public void move(Player player, Direction direction) {
 
         if (isInProgress()) {
@@ -203,7 +150,7 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelWon() {
-        popupController("You Won");
+        PopupGame.popupController("You Won");
         stop();
     }
 

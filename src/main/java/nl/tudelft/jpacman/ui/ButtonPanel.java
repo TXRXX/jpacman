@@ -9,6 +9,8 @@ import java.util.Map;
 
 import javax.swing.*;
 
+import static nl.tudelft.jpacman.Launcher.DEFAULT_DIFFICULTY;
+
 /**
  * A panel containing a button for every registered action.
  *
@@ -52,7 +54,6 @@ class ButtonPanel extends JPanel {
                 button.setContentAreaFilled(false);
                 button.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-//                        frame.dispose();
                         Launcher.pacManUI.reset();
                         HomeUI.main(null);
                     }
