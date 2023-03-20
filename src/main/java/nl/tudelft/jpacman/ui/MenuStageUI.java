@@ -1,5 +1,6 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.DBScoreBoard;
 import nl.tudelft.jpacman.game.PlayerScore;
 import nl.tudelft.jpacman.level.Player;
@@ -15,6 +16,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import static nl.tudelft.jpacman.Launcher.DEFAULT_MAP;
 
 public class MenuStageUI {
     public static void main(String s[]) {
@@ -82,35 +85,60 @@ public class MenuStageUI {
         map1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                HomeUI.main(null);
+                if(Launcher.DEFAULT_DIFFICULTY.equals("hard")){
+                    DEFAULT_MAP = "/boardH.txt";
+                }else{
+                    DEFAULT_MAP = "/board.txt";
+                }
+                InputNameUI.main(null);
             }
         });
 
         map2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                HomeUI.main(null);
+                if(Launcher.DEFAULT_DIFFICULTY.equals("hard")){
+                    DEFAULT_MAP = "/board2H.txt";
+                }else{
+                    DEFAULT_MAP = "/board2.txt";
+                }
+                InputNameUI.main(null);
             }
         });
 
         map3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                HomeUI.main(null);
+                if(Launcher.DEFAULT_DIFFICULTY.equals("hard")){
+                    DEFAULT_MAP = "/board3H.txt";
+                }else{
+                    DEFAULT_MAP = "/board3.txt";
+                }
+                InputNameUI.main(null);
             }
         });
 
         map4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                HomeUI.main(null);
+                if(Launcher.DEFAULT_DIFFICULTY.equals("hard")){
+                    DEFAULT_MAP = "/board4H.txt";
+                }else{
+                    DEFAULT_MAP = "/board4.txt";
+                }
+                InputNameUI.main(null);
             }
         });
 
         map5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                HomeUI.main(null);
+                if(Launcher.DEFAULT_DIFFICULTY.equals("hard")){
+                    DEFAULT_MAP = "/board5H.txt";
+                }else{
+                    DEFAULT_MAP = "/board5.txt";
+                }
+                InputNameUI.main(null);
             }
         });
 

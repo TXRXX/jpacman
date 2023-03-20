@@ -46,7 +46,6 @@ public class PopupGame {
 
             }
         });
-
         buttonRetry.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 popup.dispose();

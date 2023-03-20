@@ -60,7 +60,7 @@ public class MenuDifficultyUI {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "easy";
                     Launcher.DEFAULT_PLAYER_LIFE = "5";
-                    InputNameUI.main(null);
+                    MenuStageUI.main(null);
                 }
             });
 
@@ -69,7 +69,7 @@ public class MenuDifficultyUI {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "medium";
                     Launcher.DEFAULT_PLAYER_LIFE = "3";
-                    InputNameUI.main(null);
+                    MenuStageUI.main(null);
                 }
             });
 
@@ -78,7 +78,7 @@ public class MenuDifficultyUI {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "hard";
                     Launcher.DEFAULT_PLAYER_LIFE = "1";
-                    InputNameUI.main(null);
+                    MenuStageUI.main(null);
                 }
             });
             backButton.addActionListener(new ActionListener() {
