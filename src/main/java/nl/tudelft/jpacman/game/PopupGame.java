@@ -22,6 +22,9 @@ public class PopupGame {
         Color bgColor = Color.darkGray;
         popup.getContentPane().setBackground(bgColor);
         popup.setLayout(null);
+        popup.setUndecorated(true);
+        popup.setAlwaysOnTop(true);
+        popup.setLocation(90, 150);
 
         if(text.equals("You Won")) {
             ImageIcon icon = new ImageIcon("src/main/resources/assets/winTitle.png");
@@ -44,17 +47,25 @@ public class PopupGame {
             headerLabel.setBounds(60, 20, 80, 9);
             popup.add(headerLabel);
         }
+        JLabel namePlayer = new JLabel("Name : "+ Launcher.DEFAULT_PLAYER_NAME, JLabel.CENTER);
+        namePlayer.setBounds(0, 45, 200, 15);
+        namePlayer.setForeground(Color.white);
+
+        JLabel scorePlayer = new JLabel("Score : "+ Player.score, JLabel.CENTER);
+        scorePlayer.setBounds(0, 60, 200, 15);
+        scorePlayer.setForeground(Color.white);
 
         JButton buttonBtHome = new JButton(new ImageIcon("src/main/resources/assets/popupHomeButton.png"));
-        buttonBtHome.setBounds(65, 50, 67, 22);
+        buttonBtHome.setBounds(65, 80, 67, 22);
 
         JButton buttonBtScore = new JButton(new ImageIcon("src/main/resources/assets/popupScoreButton.png"));
-        buttonBtScore.setBounds(65, 80, 67, 22);
+        buttonBtScore.setBounds(65, 110, 67, 22);
 
         JButton buttonRetry = new JButton(new ImageIcon("src/main/resources/assets/popupRetryButton.png"));
-        buttonRetry.setBounds(65, 110, 67, 22);
+        buttonRetry.setBounds(65, 140, 67, 22);
 
-
+        popup.add(namePlayer);
+        popup.add(scorePlayer);
         popup.add(buttonBtHome);
         popup.add(buttonRetry);
         popup.add(buttonBtScore);
