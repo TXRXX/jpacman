@@ -6,11 +6,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import nl.tudelft.jpacman.game.Game;
-import nl.tudelft.jpacman.level.Level;
-import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
 /**
@@ -24,7 +24,7 @@ import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
  * <li>A button panel, containing all buttons provided upon creation.
  * </ul>
  *
- * @author Jeroen Roosen 
+ * @author Jeroen Roosen
  *
  */
 public class PacManUI extends JFrame {
@@ -64,40 +64,29 @@ public class PacManUI extends JFrame {
      * @param scoreFormatter
      *            The formatter used to display the current score.
      */
-
     public PacManUI(final Game game, final Map<String, Action> buttons,
                     final Map<Integer, Action> keyMappings,
                     ScoreFormatter scoreFormatter) {
 
-            super("JPacman");
-            assert game != null;
-            assert buttons != null;
-            assert keyMappings != null;
+        super("JPacman");
+        assert game != null;
+        assert buttons != null;
+        assert keyMappings != null;
 
-            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            PacKeyListener keys = new PacKeyListener(keyMappings);
-            addKeyListener(keys);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        PacKeyListener keys = new PacKeyListener(keyMappings);
+        addKeyListener(keys);
 
 
         JPanel buttonPanel = new ButtonPanel(buttons, this);
         buttonPanel.setBackground(Color.BLACK);
-        /*
-        if(!game.isInProgress() && !game.getLevel().isAnyPlayerAlive()){
-            JFrame popup = new JFrame("Popup");
-            JLabel label = new JLabel("Love u");
-            popup.add(label);
-            popup.pack();
-            popup.setSize(300,300);
-            popup.setVisible(true);
-        }*/
-
 
         scorePanel = new ScorePanel(game.getPlayers());
         if (scoreFormatter != null) {
             scorePanel.setScoreFormatter(scoreFormatter);
         }
-
         scorePanel.setBackground(Color.BLACK);
+
 
         boardPanel = new BoardPanel(game);
 
@@ -107,18 +96,18 @@ public class PacManUI extends JFrame {
         contentPanel.add(buttonPanel, BorderLayout.CENTER);
         contentPanel.add(boardPanel, BorderLayout.SOUTH);
 
-
         pack();
 
 
+    }
 
     /**
      * Starts the "engine", the thread that redraws the interface at set
      * intervals.
      */
-
     public void start() {
         setVisible(true);
+        setResizable(false);
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
