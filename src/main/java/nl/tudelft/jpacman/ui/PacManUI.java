@@ -24,7 +24,7 @@ import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
  * <li>A button panel, containing all buttons provided upon creation.
  * </ul>
  *
- * @author Jeroen Roosen 
+ * @author Jeroen Roosen
  *
  */
 public class PacManUI extends JFrame {
@@ -68,14 +68,14 @@ public class PacManUI extends JFrame {
                     final Map<Integer, Action> keyMappings,
                     ScoreFormatter scoreFormatter) {
 
-            super("JPacman");
-            assert game != null;
-            assert buttons != null;
-            assert keyMappings != null;
+        super("JPacman");
+        assert game != null;
+        assert buttons != null;
+        assert keyMappings != null;
 
-            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            PacKeyListener keys = new PacKeyListener(keyMappings);
-            addKeyListener(keys);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        PacKeyListener keys = new PacKeyListener(keyMappings);
+        addKeyListener(keys);
 
 
         JPanel buttonPanel = new ButtonPanel(buttons, this);
@@ -88,15 +88,15 @@ public class PacManUI extends JFrame {
         scorePanel.setBackground(Color.BLACK);
 
 
-            boardPanel = new BoardPanel(game);
+        boardPanel = new BoardPanel(game);
 
-            Container contentPanel = getContentPane();
+        Container contentPanel = getContentPane();
         contentPanel.setLayout(new BorderLayout());
         contentPanel.add(scorePanel, BorderLayout.NORTH);
         contentPanel.add(buttonPanel, BorderLayout.CENTER);
         contentPanel.add(boardPanel, BorderLayout.SOUTH);
 
-            pack();
+        pack();
 
 
     }

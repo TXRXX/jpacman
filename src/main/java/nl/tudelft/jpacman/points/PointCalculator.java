@@ -22,6 +22,7 @@ public interface PointCalculator {
      * @param ghost
      *            The ghost causing the player to die.
      */
+
     void collidedWithAGhost(Player player, Ghost ghost);
 
     /**
@@ -45,4 +46,5 @@ public interface PointCalculator {
      *           The direction of the move.
      */
     void pacmanMoved(Player player, Direction direction);
+
 }

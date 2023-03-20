@@ -1,5 +1,6 @@
 package nl.tudelft.jpacman.level;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +17,8 @@ import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.board.Unit;
 import nl.tudelft.jpacman.npc.Ghost;
+
+import javax.swing.*;
 
 /**
  * A level of Pac-Man. A level consists of the board with the players and the
@@ -102,6 +105,7 @@ public class Level {
         for (Ghost ghost : ghosts) {
             npcs.put(ghost, null);
         }
+
         this.startSquares = startPositions;
         this.startSquareIndex = 0;
         this.players = new ArrayList<>();
@@ -144,6 +148,7 @@ public class Level {
         if (players.contains(player)) {
             return;
         }
+
         players.add(player);
         Square square = startSquares.get(startSquareIndex);
         player.occupy(square);
@@ -218,6 +223,7 @@ public class Level {
     public void stop() {
         synchronized (startStopLock) {
             if (!isInProgress()) {
+
                 return;
             }
             stopNPCs();
@@ -261,6 +267,7 @@ public class Level {
         return inProgress;
     }
 
+
     /**
      * Updates the observers about the state of this level.
      */
@@ -269,6 +276,7 @@ public class Level {
             for (LevelObserver observer : observers) {
                 observer.levelLost();
             }
+
         }
         if (remainingPellets() == 0) {
             for (LevelObserver observer : observers) {
