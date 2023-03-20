@@ -1,11 +1,12 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.game.DBScoreBoard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+
 
 public class HomeUI {
 
@@ -17,20 +18,19 @@ public class HomeUI {
         frame.getContentPane().setBackground(bgColor);
         frame.setLayout(new GridBagLayout());
 
-        ImageIcon icon = new ImageIcon("src/main/resources/sprite/fullPacman.png");
-        Image image = icon.getImage();
-        Image scaledImage = ((Image) image).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-        JLabel headerLabel = new JLabel("PacMan");
-        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 50));
+        ImageIcon icon = new ImageIcon("src/main/resources/assets/PacMan-Logo.png");
+        Image image = icon.getImage();
+        ImageIcon scaledIcon = new ImageIcon(image);
+        JLabel headerLabel = new JLabel("");
         frame.add(headerLabel, new GridBagConstraints());
         Color headerTextColor = Color.white;
         headerLabel.setForeground(headerTextColor);
-//        headerLabel.setIcon(scaledIcon);
+        headerLabel.setIcon(scaledIcon);
+
 
         JButton playButton = new JButton(new ImageIcon("src/main/resources/assets/playButton.png"));
-        JButton skinsButton = new JButton(new ImageIcon("src/main/resources/assets/skinButton.png"));
+//        JButton skinsButton = new JButton(new ImageIcon("src/main/resources/assets/skinButton.png"));
         JButton scoreButton = new JButton(new ImageIcon("src/main/resources/assets/scoreButton.png"));
         JButton quitButton = new JButton(new ImageIcon("src/main/resources/assets/quitButton.png"));
 
@@ -38,9 +38,9 @@ public class HomeUI {
         playButton.setOpaque(false);
         playButton.setContentAreaFilled(false);
 
-        skinsButton.setBorderPainted(false);
-        skinsButton.setOpaque(false);
-        skinsButton.setContentAreaFilled(false);
+//        skinsButton.setBorderPainted(false);
+//        skinsButton.setOpaque(false);
+//        skinsButton.setContentAreaFilled(false);
 
         scoreButton.setBorderPainted(false);
         scoreButton.setOpaque(false);
@@ -55,6 +55,14 @@ public class HomeUI {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 MenuModeUI.main(null);
+            }
+        });
+
+        scoreButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                frame.dispose();
+                ScoreBoardUI.main(null);
             }
         });
 
@@ -78,15 +86,15 @@ public class HomeUI {
         frame.add(playButton, gbc);
 
 
-        gbc.gridy = 2;
-        gbc.weighty = 0.5;
-        frame.add(skinsButton, gbc);
+//        gbc.gridy = 2;
+//        gbc.weighty = 0.5;
+//        frame.add(skinsButton, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 2;
         gbc.weighty = 0.5;
         frame.add(scoreButton, gbc);
 
-        gbc.gridy = 4;
+        gbc.gridy = 3;
         gbc.weighty = 0.5;
         frame.add(quitButton, gbc);
 
