@@ -4,3 +4,4 @@ tester2	510
 tester3	280
 tester4	300
 tester5	160
+Anonymous	840

@@ -1,7 +1,9 @@
 package nl.tudelft.jpacman.game;
 
 import nl.tudelft.jpacman.Launcher;
+import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.ui.HomeUI;
+import nl.tudelft.jpacman.ui.ScoreBoardUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 import static nl.tudelft.jpacman.Launcher.DEFAULT_DIFFICULTY;
+import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_NAME;
 
 public class PopupGame {
 
@@ -33,6 +36,7 @@ public class PopupGame {
         popup.add(headerLabel);
         popup.add(buttonBtHome);
         popup.add(buttonRetry);
+        popup.add(buttonBtScore);
 
         buttonBtHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -60,9 +64,21 @@ public class PopupGame {
             }
         });
 
+        buttonBtScore.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                //write playerName and score to database
+                DBScoreBoard.WriteScoreBoard(DEFAULT_PLAYER_NAME,Player.score);
+
+                popup.dispose();
+                ScoreBoardUI.main(null);
+
+            }
+        });
+
         popup.pack();
         popup.setSize(300,300);
-        popup.setResizable(false);
+//        popup.setResizable(false);
         popup.setVisible(true);
     };
 }

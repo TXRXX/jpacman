@@ -89,11 +89,6 @@ public abstract class Game implements LevelObserver {
 
     public void reset(){
         stop();
-        // show Player Name and Score
-//        System.out.println("Player Name : " + DEFAULT_PLAYER_NAME + ", Get Score :" + Player.score);
-
-        //write playerName and score to database
-//        DBScoreBoard.WriteScoreBoard(DEFAULT_PLAYER_NAME,Player.score);
         int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
         life -= 1;
         DEFAULT_PLAYER_LIFE = String.valueOf(life);
