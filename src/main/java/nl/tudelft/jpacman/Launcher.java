@@ -40,7 +40,7 @@ public class Launcher {
     public static String DEFAULT_DIFFICULTY = "easy";
     public static String DEFAULT_MODE = "";
 
-    public static String DEFAULT_PLAYER_LIFE = "infinity";
+    public static String DEFAULT_PLAYER_LIFE = "5";
     public static String DEFAULT_PLAYER_NAME = "";
     private String levelMap = DEFAULT_MAP;
 

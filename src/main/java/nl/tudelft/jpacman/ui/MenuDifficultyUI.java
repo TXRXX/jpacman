@@ -59,7 +59,7 @@ public class MenuDifficultyUI {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "easy";
-                    Launcher.DEFAULT_PLAYER_LIFE = "infinity";
+                    Launcher.DEFAULT_PLAYER_LIFE = "5";
                     InputNameUI.main(null);
                 }
             });

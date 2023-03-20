@@ -94,14 +94,12 @@ public abstract class Game implements LevelObserver {
 
         //write playerName and score to database
 //        DBScoreBoard.WriteScoreBoard(DEFAULT_PLAYER_NAME,Player.score);
+        int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
+        life -= 1;
+        DEFAULT_PLAYER_LIFE = String.valueOf(life);
 
-        if(!Objects.equals(DEFAULT_DIFFICULTY, "easy") && !Objects.equals(DEFAULT_PLAYER_LIFE, "0")){
-            int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
-            life -= 1;
-            DEFAULT_PLAYER_LIFE = String.valueOf(life);
+        if(!Objects.equals(DEFAULT_PLAYER_LIFE, "0")){
 //            System.out.println("Player Life : "+ DEFAULT_PLAYER_LIFE);
-        }
-        if(!Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
             Launcher.pacManUI.reset();
             Launcher launcher = new Launcher();
             launcher.launch(DEFAULT_DIFFICULTY);
