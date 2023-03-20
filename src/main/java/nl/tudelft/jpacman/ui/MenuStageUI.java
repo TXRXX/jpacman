@@ -38,35 +38,35 @@ public class MenuStageUI {
         frame.add(headerLabel);
 
 
-        JButton map1 = new JButton(new ImageIcon("src/main/resources/assets/map.png"));
+        JButton map1 = new JButton(new ImageIcon("src/main/resources/assets/map1.png"));
         map1.setBorderPainted(false);
         map1.setOpaque(false);
         map1.setContentAreaFilled(false);
         map1.setBounds(35, 100, 80, 80);
         frame.add(map1);
 
-        JButton map2 = new JButton(new ImageIcon("src/main/resources/assets/map.png"));
+        JButton map2 = new JButton(new ImageIcon("src/main/resources/assets/map2.png"));
         map2.setBorderPainted(false);
         map2.setOpaque(false);
         map2.setContentAreaFilled(false);
         map2.setBounds(155, 100, 80, 80);
         frame.add(map2);
 
-        JButton map3 = new JButton(new ImageIcon("src/main/resources/assets/map.png"));
+        JButton map3 = new JButton(new ImageIcon("src/main/resources/assets/map3.png"));
         map3.setBorderPainted(false);
         map3.setOpaque(false);
         map3.setContentAreaFilled(false);
         map3.setBounds(275, 100, 80, 80);
         frame.add(map3);
 
-        JButton map4 = new JButton(new ImageIcon("src/main/resources/assets/map.png"));
+        JButton map4 = new JButton(new ImageIcon("src/main/resources/assets/map4.png"));
         map4.setBorderPainted(false);
         map4.setOpaque(false);
         map4.setContentAreaFilled(false);
         map4.setBounds(90, 200, 80, 80);
         frame.add(map4);
 
-        JButton map5 = new JButton(new ImageIcon("src/main/resources/assets/map.png"));
+        JButton map5 = new JButton(new ImageIcon("src/main/resources/assets/map5.png"));
         map5.setBorderPainted(false);
         map5.setOpaque(false);
         map5.setContentAreaFilled(false);
