@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.ui.InputNameUI;
 import nl.tudelft.jpacman.ui.MenuModeUI;
+import nl.tudelft.jpacman.ui.MenuStageUI;
 
 class DifficultySelectionTest {
 	JFrame frame = new JFrame("Pacman Select Difficulty");
@@ -32,8 +33,8 @@ class DifficultySelectionTest {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "easy";
-                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
-                InputNameUI.main(null);
+                Launcher.DEFAULT_PLAYER_LIFE = "5";
+                MenuStageUI.main(null);
             }
         });
 		buttonEasyMode.doClick();
@@ -42,7 +43,7 @@ class DifficultySelectionTest {
 	    boolean isInputNameUIVisible = false;
 
 	    for (Frame f : frames) {
-	        if (f.getTitle().equals("Pacman Player Name") && f.isShowing()) {
+	        if (f.getTitle().equals("Pacman Select Stage") && f.isShowing()) {
 	        	isInputNameUIVisible = true;
 	            break;
 	        }
@@ -56,8 +57,8 @@ class DifficultySelectionTest {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "easy";
-                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
-                InputNameUI.main(null);
+                Launcher.DEFAULT_PLAYER_LIFE = "5";
+                MenuStageUI.main(null);
             }
         });
 		buttonEasyMode.doClick();
@@ -67,29 +68,29 @@ class DifficultySelectionTest {
 	@DisplayName("Player Life Easy")
 	@Test
     void LifeEasy() {
-		buttonEasyMode.addActionListener(new ActionListener() {
+    	buttonEasyMode.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "easy";
-                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
-                InputNameUI.main(null);
+                Launcher.DEFAULT_PLAYER_LIFE = "5";
+                MenuStageUI.main(null);
             }
         });
 		buttonEasyMode.doClick();
 		
-        assertEquals("infinity",Launcher.DEFAULT_PLAYER_LIFE);
+        assertEquals("5",Launcher.DEFAULT_PLAYER_LIFE);
     }
 	
 	
 	@DisplayName("Medium to Input name")
 	@Test
 	void testMediumtoName() {
-    	buttonNormalMode.addActionListener(new ActionListener() {
+    	buttonEasyMode.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "easy";
-                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
-                InputNameUI.main(null);
+                Launcher.DEFAULT_PLAYER_LIFE = "5";
+                MenuStageUI.main(null);
             }
         });
 		buttonNormalMode.doClick();
@@ -98,7 +99,7 @@ class DifficultySelectionTest {
 	    boolean isInputNameUIVisible = false;
 
 	    for (Frame f : frames) {
-	        if (f.getTitle().equals("Pacman Player Name") && f.isShowing()) {
+	        if (f.getTitle().equals("Pacman Select Stage") && f.isShowing()) {
 	        	isInputNameUIVisible = true;
 	            break;
 	        }
@@ -114,7 +115,7 @@ class DifficultySelectionTest {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "medium";
                 Launcher.DEFAULT_PLAYER_LIFE = "3";
-                InputNameUI.main(null);
+                MenuStageUI.main(null);
             }
         });
 		buttonNormalMode.doClick();
@@ -129,7 +130,7 @@ class DifficultySelectionTest {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "medium";
                 Launcher.DEFAULT_PLAYER_LIFE = "3";
-                InputNameUI.main(null);
+                MenuStageUI.main(null);
             }
         });
 		buttonNormalMode.doClick();
@@ -140,12 +141,12 @@ class DifficultySelectionTest {
 	@DisplayName("Hard to Input name")
 	@Test
 	void testHardtoName() {
-    	buttonHardMode.addActionListener(new ActionListener() {
+		buttonHardMode.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                Launcher.DEFAULT_DIFFICULTY = "easy";
-                Launcher.DEFAULT_PLAYER_LIFE = "infinity";
-                InputNameUI.main(null);
+                Launcher.DEFAULT_DIFFICULTY = "hard";
+                Launcher.DEFAULT_PLAYER_LIFE = "1";
+                MenuStageUI.main(null);
             }
         });
 		buttonHardMode.doClick();
@@ -154,7 +155,7 @@ class DifficultySelectionTest {
 	    boolean isInputNameUIVisible = false;
 
 	    for (Frame f : frames) {
-	        if (f.getTitle().equals("Pacman Player Name") && f.isShowing()) {
+	        if (f.getTitle().equals("Pacman Select Stage") && f.isShowing()) {
 	        	isInputNameUIVisible = true;
 	            break;
 	        }
@@ -170,7 +171,7 @@ class DifficultySelectionTest {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "hard";
                 Launcher.DEFAULT_PLAYER_LIFE = "1";
-                InputNameUI.main(null);
+                MenuStageUI.main(null);
             }
         });
 		buttonHardMode.doClick();
@@ -185,7 +186,7 @@ class DifficultySelectionTest {
                 frame.dispose();
                 Launcher.DEFAULT_DIFFICULTY = "hard";
                 Launcher.DEFAULT_PLAYER_LIFE = "1";
-                InputNameUI.main(null);
+                MenuStageUI.main(null);
             }
         });
 		buttonHardMode.doClick();
@@ -196,10 +197,10 @@ class DifficultySelectionTest {
     @DisplayName("Back Button Test")
     @Test
     void testBackButton() {
-        backButton.addActionListener(new ActionListener() {
+    	backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                HomeUI.main(null);
+                MenuModeUI.main(null);
             }
         });
         backButton.doClick();

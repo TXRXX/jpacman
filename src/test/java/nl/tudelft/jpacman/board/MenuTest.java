@@ -82,7 +82,7 @@ class MenuTest {
 	    boolean isMenuModeUIVisible = false;
 
 	    for (Frame f : frames) {
-	        if (f.getTitle().equals("Scoreboard") && f.isShowing()) {
+	        if (f.getTitle().equals("Pacman Scoreboard") && f.isShowing()) {
 	            isMenuModeUIVisible = true;
 	            break;
 	        }

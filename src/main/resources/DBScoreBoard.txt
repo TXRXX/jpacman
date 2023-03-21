@@ -10,3 +10,4 @@ asdas	110
 Anonymous	130
 Anonymous	250
 Anonymous	280
+	0
