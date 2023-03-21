@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.Launcher;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,14 +15,17 @@ public class MenuModeUI {
         frame.setLayout(new GridBagLayout());
 
 
-        JLabel headerLabel = new JLabel("SELECT MODE");
-        headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
+        ImageIcon icon = new ImageIcon("src/main/resources/assets/selectModeTitle.png");
+        Image image = icon.getImage();
+        ImageIcon scaledIcon = new ImageIcon(image);
+        JLabel headerLabel = new JLabel("");
         frame.add(headerLabel, new GridBagConstraints());
         Color headerTextColor = Color.white;
         headerLabel.setForeground(headerTextColor);
+        headerLabel.setIcon(scaledIcon);
 
         JButton classicButton = new JButton(new ImageIcon("src/main/resources/assets/classicButton.png"));
-        JButton ghostButton = new JButton(new ImageIcon("src/main/resources/assets/ghostButton.png"));
+        JButton ghostButton = new JButton(new ImageIcon("src/main/resources/assets/challengeButton.png"));
         JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
         classicButton.setBorderPainted(false);
@@ -37,17 +42,19 @@ public class MenuModeUI {
 
         classicButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Launcher.DEFAULT_MODE = "";
                 frame.dispose();
                 MenuDifficultyUI.main(null);
             }
         });
 
-//        ghostButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                frame.dispose();
-//                MenuDifficultyUI.main(null);
-//            }
-//        });
+   ghostButton.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+               Launcher.DEFAULT_MODE = "Challenge";
+               frame.dispose();
+            MenuDifficultyUI.main(null);
+          }
+       });
 
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

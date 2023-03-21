@@ -1,5 +1,8 @@
 package nl.tudelft.jpacman.game;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,9 +14,10 @@ import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
-
-import static nl.tudelft.jpacman.Launcher.DEFAULT_DIFFICULTY;
-import static nl.tudelft.jpacman.Launcher.DEFAULT_PLAYER_LIFE;
+import nl.tudelft.jpacman.ui.HomeUI;
+import nl.tudelft.jpacman.ui.MenuModeUI;
+import javax.swing.*;
+import static nl.tudelft.jpacman.Launcher.*;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -57,6 +61,7 @@ public abstract class Game implements LevelObserver {
             if (isInProgress()) {
                 return;
             }
+
             if (getLevel().isAnyPlayerAlive() && getLevel().remainingPellets() > 0) {
                 inProgress = true;
                 getLevel().addObserver(this);
@@ -78,22 +83,27 @@ public abstract class Game implements LevelObserver {
         }
     }
 
+    public void home() {
+        stop();
+    }
+
     public void reset(){
         stop();
-        if(!Objects.equals(DEFAULT_DIFFICULTY, "easy") && !Objects.equals(DEFAULT_PLAYER_LIFE, "0")){
-            int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
-            life -= 1;
-            DEFAULT_PLAYER_LIFE = String.valueOf(life);
+        int life = Integer.parseInt(DEFAULT_PLAYER_LIFE);
+        life -= 1;
+        DEFAULT_PLAYER_LIFE = String.valueOf(life);
+
+        if(!Objects.equals(DEFAULT_PLAYER_LIFE, "0")){
 //            System.out.println("Player Life : "+ DEFAULT_PLAYER_LIFE);
-        }
-        if(!Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
             Launcher.pacManUI.reset();
             Launcher launcher = new Launcher();
             launcher.launch(DEFAULT_DIFFICULTY);
         }
+        else if(!isInProgress() && Objects.equals(DEFAULT_PLAYER_LIFE,"0")){
+            PopupGame.popupController("You Lose");
+        }
+
     }
-
-
     /**
      * @return <code>true</code> iff the game is started and in progress.
      */
@@ -119,7 +129,7 @@ public abstract class Game implements LevelObserver {
      * @param direction
      *            The direction to move in.
      */
-    public Timer timer = new Timer();
+
     public void move(Player player, Direction direction) {
 
         if (isInProgress()) {
@@ -133,6 +143,7 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelWon() {
+        PopupGame.popupController("You Won");
         stop();
     }
 

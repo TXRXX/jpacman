@@ -18,11 +18,14 @@ public class MenuDifficultyUI {
             frame.getContentPane().setBackground(bgColor);
             frame.setLayout(new GridBagLayout());
 
-            JLabel headerLabel = new JLabel("SELECT DIFFICULTY");
-            headerLabel.setFont(new Font("Retro Gaming", Font.BOLD, 16));
+            ImageIcon ss = new ImageIcon("src/main/resources/assets/selectDifficultyTitle.png");
+            Image title = ss.getImage();
+            ImageIcon titleImg = new ImageIcon(title);
+            JLabel headerLabel = new JLabel("");
             frame.add(headerLabel, new GridBagConstraints());
             Color headerTextColor = Color.white;
             headerLabel.setForeground(headerTextColor);
+            headerLabel.setIcon(titleImg);
 
             //set image icon
             ImageIcon icon = new ImageIcon("src/main/resources/sprite/fullPacman.png");
@@ -30,57 +33,34 @@ public class MenuDifficultyUI {
             Image scaledImage = ((Image) image).getScaledInstance(30, 30, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-            JButton buttonEasyMode = new JButton("Daddy, can i play this game?");
-            JButton buttonNormalMode = new JButton("Let's get it");
-            JButton buttonHardMode = new JButton("Are you crazy!");
+            JButton buttonEasyMode = new JButton(new ImageIcon("src/main/resources/assets/easyButton.png"));
+            JButton buttonNormalMode = new JButton(new ImageIcon("src/main/resources/assets/mediumButton.png"));
+            JButton buttonHardMode = new JButton(new ImageIcon("src/main/resources/assets/hardButton.png"));
             JButton backButton = new JButton(new ImageIcon("src/main/resources/assets/backButton.png"));
 
-            buttonEasyMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
-            buttonNormalMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
-            buttonHardMode.setFont(new Font("Retro Gaming", Font.PLAIN, 12));
 
-            buttonEasyMode.setIcon(scaledIcon);
-            buttonNormalMode.setIcon(scaledIcon);
-            buttonHardMode.setIcon(scaledIcon);
+            buttonEasyMode.setBorderPainted(false);
+            buttonEasyMode.setOpaque(false);
+            buttonEasyMode.setContentAreaFilled(false);
+
+            buttonNormalMode.setBorderPainted(false);
+            buttonNormalMode.setOpaque(false);
+            buttonNormalMode.setContentAreaFilled(false);
+
+            buttonHardMode.setBorderPainted(false);
+            buttonHardMode.setOpaque(false);
+            buttonHardMode.setContentAreaFilled(false);
+
             backButton.setBorderPainted(false);
             backButton.setOpaque(false);
             backButton.setContentAreaFilled(false);
-
-            buttonEasyMode.setPreferredSize(new Dimension(300, 50));
-            buttonNormalMode.setPreferredSize(new Dimension(300, 50));
-            buttonHardMode.setPreferredSize(new Dimension(300, 50));
-
-
-            Color buttonBgColor = Color.BLACK;
-            Color buttonTextColor = Color.WHITE;
-            buttonEasyMode.setBackground(buttonBgColor);
-            buttonNormalMode.setBackground(buttonBgColor);
-            buttonHardMode.setBackground(buttonBgColor);
-
-            buttonEasyMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-            buttonNormalMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-            buttonHardMode.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-            
-
-            buttonEasyMode.setForeground(buttonTextColor);
-            buttonNormalMode.setForeground(buttonTextColor);
-            buttonHardMode.setForeground(buttonTextColor);
-
-            buttonEasyMode.setHorizontalAlignment(SwingConstants.LEFT);
-            buttonNormalMode.setHorizontalAlignment(SwingConstants.LEFT);
-            buttonHardMode.setHorizontalAlignment(SwingConstants.LEFT);
-
-            frame.add(buttonEasyMode, new GridBagConstraints());
-            frame.add(buttonNormalMode, new GridBagConstraints());
-            frame.add(buttonHardMode, new GridBagConstraints());
-
 
             buttonEasyMode.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "easy";
-                    Launcher.DEFAULT_PLAYER_LIFE = "infinity";
-                    InputNameUI.main(null);
+                    Launcher.DEFAULT_PLAYER_LIFE = "5";
+                    MenuStageUI.main(null);
                 }
             });
 
@@ -89,7 +69,7 @@ public class MenuDifficultyUI {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "medium";
                     Launcher.DEFAULT_PLAYER_LIFE = "3";
-                    InputNameUI.main(null);
+                    MenuStageUI.main(null);
                 }
             });
 
@@ -98,7 +78,7 @@ public class MenuDifficultyUI {
                     frame.dispose();
                     Launcher.DEFAULT_DIFFICULTY = "hard";
                     Launcher.DEFAULT_PLAYER_LIFE = "1";
-                    InputNameUI.main(null);
+                    MenuStageUI.main(null);
                 }
             });
             backButton.addActionListener(new ActionListener() {

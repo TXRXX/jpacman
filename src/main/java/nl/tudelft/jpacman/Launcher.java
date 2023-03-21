@@ -23,6 +23,8 @@ import nl.tudelft.jpacman.ui.Action;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
 
+import javax.swing.*;
+
 /**
  * Creates and launches the JPacMan UI.
  * 
@@ -33,11 +35,12 @@ public class Launcher {
 
     private static PacManSprites SPRITE_STORE = new PacManSprites();
 
-    public static final String DEFAULT_MAP = "/board.txt";
+    public static String DEFAULT_MAP = "/board.txt";
 
     public static String DEFAULT_DIFFICULTY = "easy";
+    public static String DEFAULT_MODE = "";
 
-    public static String DEFAULT_PLAYER_LIFE = "infinity";
+    public static String DEFAULT_PLAYER_LIFE = "5";
     public static String DEFAULT_PLAYER_NAME = "";
     private String levelMap = DEFAULT_MAP;
 
@@ -202,14 +205,13 @@ public class Launcher {
             }
         }
     }
-    private Action moveTowardsDirection(Direction direction) {
 
-        if(DEFAULT_DIFFICULTY == "easy"){
+    private Action moveTowardsDirection(Direction direction) {
+        if(DEFAULT_MODE == ""){
             return () ->{
                 assert game != null;
                 getGame().move(getSinglePlayer(getGame()), direction);
             };
-
         }
         else{
             boolean c = checkSameOldAndNew(direction);
@@ -225,21 +227,25 @@ public class Launcher {
                         getGame().move(getSinglePlayer(getGame()), direction);
                     }
                 };
+
+
                 try{
                     taskCancel(task,c);
                 }finally {
-                    if(DEFAULT_DIFFICULTY == "medium"){
+                    if(DEFAULT_MODE == "Challenge" && DEFAULT_DIFFICULTY == "easy"){
+                        timer.schedule(task, 0, 300);
+                    }
+                    else if (DEFAULT_MODE == "Challenge" && DEFAULT_DIFFICULTY == "medium") {
+                        timer.schedule(task, 0, 200);
+                    }
+                    else if (DEFAULT_MODE == "Challenge" && DEFAULT_DIFFICULTY == "hard") {
                         timer.schedule(task, 0, 100);
-                    }else if(DEFAULT_DIFFICULTY == "hard"){
-                        timer.schedule(task, 0, 50);
                     }
 
                 }
             };
         }
     }
-
-
 
     private Player getSinglePlayer(final Game game) {
         List<Player> players = game.getPlayers();
@@ -260,6 +266,7 @@ public class Launcher {
         pacManUI.start();
     }
 
+
     public void reset(){
         if (getGame().getLevel().isAnyPlayerAlive()){
             makeGame(DEFAULT_DIFFICULTY);
@@ -268,6 +275,7 @@ public class Launcher {
             pacManUI = builder.build(getGame());
             pacManUI.start();
         }
+
     }
 
     /**

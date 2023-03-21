@@ -5,8 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Player;
@@ -85,21 +84,19 @@ public class ScorePanel extends JPanel {
         }
 
 
-
-
-
-
     }
-
 
 
     /**
      * Refreshes the scores of the players.
      */
+
+    private int countLoop = 0;
     protected void refresh() {
         for (Map.Entry<Player, JLabel> entry : scoreLabels.entrySet()) {
             Player player = entry.getKey();
             String score = "";
+
             if (!player.isAlive()) {
                 score = "You died. ";
             }

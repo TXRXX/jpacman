@@ -1,0 +1,12 @@
+wave	60
+tester1	140
+tester2	510
+tester3	280
+tester4	300
+tester5	160
+Anonymous	840
+	0
+asdas	110
+Anonymous	130
+Anonymous	250
+Anonymous	280
